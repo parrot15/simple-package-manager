@@ -13,6 +13,11 @@ import {
 } from "./constants";
 import { PackageInfo, PackageJson, DependencyGraph } from "./types";
 
+/**
+ * Checks if a path exists in the file system.
+ * @param path The file or directory path to check.
+ * @returns Promise of true if path exists, or false otherwise.
+ */
 export async function checkPathExists(path: string): Promise<boolean> {
   try {
     await fs.access(path);
@@ -22,6 +27,10 @@ export async function checkPathExists(path: string): Promise<boolean> {
   }
 }
 
+/**
+ * Ensures that the necessary 'output', 'output/node_modules', and
+ * 'output/.cache' exist.
+ */
 export async function ensureOutputDirectoriesExist(): Promise<void> {
   // Create base output folder if it doesn't exist.
   const baseOutputDirExists = await checkPathExists(BASE_OUTPUT_DIR);
@@ -45,6 +54,10 @@ export async function ensureOutputDirectoriesExist(): Promise<void> {
   }
 }
 
+/**
+ * Retrieves the package.json data. Exits if package.json doesn't exist.
+ * @returns Promise of parsed package.json object.
+ */
 export async function getPackageJson(): Promise<PackageJson> {
   const packageJsonExists = checkPathExists(PACKAGE_JSON_PATH);
   if (!packageJsonExists) {
@@ -58,12 +71,22 @@ export async function getPackageJson(): Promise<PackageJson> {
   return packageJson;
 }
 
+/**
+ * Saves the lock file for deterministic package installation. The lock
+ * file is merely just the dependency graph serialized and dumped into
+ * a file.
+ * @param graph Dependency graph to save into lock file.
+ */
 export async function saveLockFile(graph: DependencyGraph): Promise<void> {
   // Lock file is just the entire dependency graph serialized into JSON.
   await fs.writeFile(LOCK_PATH, JSON.stringify(graph, null, 2));
   console.log(`Lock file saved at ${LOCK_PATH}`);
 }
 
+/**
+ * Read the dependency graph from the lock file.
+ * @returns Promise of the dependency graph if it exists, otherwise null.
+ */
 export async function readLockFile(): Promise<DependencyGraph | null> {
   const lockFileExists = await checkPathExists(LOCK_PATH);
   if (lockFileExists) {
@@ -73,6 +96,17 @@ export async function readLockFile(): Promise<DependencyGraph | null> {
   return null;
 }
 
+/**
+ * Resolves the exact version of a package given a version range. For
+ * example, a version range would be ^7.6.2 (semver notation). This would
+ * be resolved to an exact version, e.g. 7.6.2.
+ * If the version range is 'latest', then just fetches the latest version
+ * from the registry.
+ * @param packageName Name of the package to resolve the version of.
+ * @param versionRange The version range to resolve.
+ * @returns Promise of the exact version of the package.
+ * @throws Error if the version couldn't be resolved.
+ */
 export async function resolveVersion(
   packageName: string,
   versionRange: string,
@@ -84,9 +118,6 @@ export async function resolveVersion(
     console.log(`Retrieving version info ${cacheKey} from cache.`);
     return packageVersionCache.get(cacheKey) as string;
   }
-  // if (packageVersionCache[cacheKey]) {
-  //   return packageVersionCache[cacheKey];
-  // }
 
   const registryUrl = `${REGISTRY_URL}/${packageName}`;
   console.log(`Fetching version info for ${registryUrl}.`);
@@ -94,7 +125,6 @@ export async function resolveVersion(
     const response = await axios.get(registryUrl);
     if (versionRange === "latest") {
       const latestVersion = response.data["dist-tags"].latest;
-      // packageVersionCache[cacheKey] = latestVersion;
       packageVersionCache.set(cacheKey, latestVersion);
       return latestVersion;
     }
@@ -105,7 +135,6 @@ export async function resolveVersion(
         `No matching version found for ${packageName}@${versionRange}`,
       );
     }
-    // packageVersionCache[cacheKey] = validVersion;
     packageVersionCache.set(cacheKey, validVersion);
     return validVersion;
   } catch (error) {
@@ -116,7 +145,19 @@ export async function resolveVersion(
   }
 }
 
-export async function getPackageInfo(packageName: string, exactVersion: string): Promise<PackageInfo> {
+/**
+ * Retrieves detailed information about a package, such as its SHA-512 hash,
+ * sub-dependencies, URL to fetch the tarball, etc.
+ * @param packageName The name of the package.
+ * @param exactVersion The exact version of the package.
+ * @returns Promise of a PackageInfo object populated with the package's
+ * information.
+ * @throws Throws an error if the package info couldn't be retrieved.
+ */
+export async function getPackageInfo(
+  packageName: string,
+  exactVersion: string,
+): Promise<PackageInfo> {
   const packageIdentifier = `${packageName}@${exactVersion}`;
 
   // Check if the package info is already in the cache.
@@ -127,54 +168,66 @@ export async function getPackageInfo(packageName: string, exactVersion: string):
 
   const registryUrl = `${REGISTRY_URL}/${packageName}/${exactVersion}`;
   console.log(`Fetching package info for ${registryUrl}.`);
-  // const packageVersion = response.data.version;
-  // // const packageIdentifier = `${packageName}@${packageVersion}`;
-  // const dependencies = response.data.dependencies || {};
-  // const tarballUrl = response.data.dist.tarball;
-  // const hash = response.data.dist.integrity;
   try {
     const response = await axios.get(registryUrl);
     const packageInfo: PackageInfo = {
       version: response.data.version,
       tarballUrl: response.data.dist.tarball,
       hash: response.data.dist.integrity,
-      isDirectDependency: false,  // Default value of false, can be overridden.
-      dependencies: [],  // Default value of empty, can be overriden.
-      // dependencies: response.data.dependencies,
-    }
+      isDirectDependency: false, // Default value of false, can be overridden.
+      dependencies: [], // Default value of empty, can be overriden.
+    };
 
-    /**
-      const dependencyIdentifiers = await Promise.all(Object.entries(dependencies).map(
-        async ([depName, depVersion]) => {
-          const exactVersion = await resolveVersion(depName, depVersion as string);
-          return `${depName}@${exactVersion}`;
-        }
-      ));
-     */
     const dependencyVersionRanges = response.data.dependencies || {};
-    const dependencyIdentifiers = await Promise.all(Object.entries(dependencyVersionRanges).map(
-      async ([depName, depVersionRange]) => {
-        const exactVersion = await resolveVersion(depName, depVersionRange as string);
-        return `${depName}@${exactVersion}`;
-      }
-    ));
+    const dependencyIdentifiers = await Promise.all(
+      Object.entries(dependencyVersionRanges).map(
+        async ([depName, depVersionRange]) => {
+          const exactVersion = await resolveVersion(
+            depName,
+            depVersionRange as string,
+          );
+          return `${depName}@${exactVersion}`;
+        },
+      ),
+    );
     packageInfo.dependencies = dependencyIdentifiers;
 
     packageInfoCache.set(packageIdentifier, packageInfo);
     return packageInfo;
   } catch (error) {
-    console.error(`Error resolving package info for ${packageIdentifier}: ${error}.`);
+    console.error(
+      `Error resolving package info for ${packageIdentifier}: ${error}.`,
+    );
     throw error;
   }
 }
 
-export function parsePackageIdentifier(packageIdentifier: string): [string, string] {
+/**
+ * Parses a package identifier into its name and exact version components.
+ * A package identifier follows the format "<packageName>@<exactVersion>".
+ * For example, a package identifier could be "semver@7.6.2".
+ * There is a bit more logic involved than just splitting on the '@' symbol
+ * because we could have scoped packages, e.g. "@jridgewell/resolve-uri@3.1.2".
+ * @param packageIdentifier The full package identifier string.
+ * @returns Tuple containing package name and exact version.
+ */
+export function parsePackageIdentifier(
+  packageIdentifier: string,
+): [string, string] {
   const atIndex = packageIdentifier.lastIndexOf("@");
   const packageName = packageIdentifier.substring(0, atIndex);
   const packageVersion = packageIdentifier.substring(atIndex + 1);
   return [packageName, packageVersion];
 }
 
+/**
+ * Compares the hash of a given file's data against its expected hash value.
+ * This is used to validate tarballs from the NPM registry and .cache directory
+ * and make sure they haven't been tampered with.
+ * @param fileData Data of the file to generate the hash for.
+ * @param expectedHash Expected hash to compare the generated hash against.
+ * @returns True if hashes match, false otherwise.
+ */
 export function doesHashMatch(fileData: Buffer, expectedHash: string): boolean {
   // Extract the hash algorithm and the hash value.
   const [algorithm, base64Hash] = expectedHash.split("-");

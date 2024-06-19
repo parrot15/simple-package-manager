@@ -2,8 +2,11 @@ import { ensureOutputDirectoriesExist } from "./utils";
 import { addPackage } from "./add";
 import { determinePackageInstallation } from "./install";
 
-// Command line argument processing.
-async function main() {
+/**
+ * Entry point for the package manager CLI. Processes 'add' and
+ * 'install' commands.
+ */
+async function main(): Promise<void> {
   const args = process.argv.slice(2);
   if (args.length > 0) {
     const command = args[0];
