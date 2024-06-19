@@ -1,5 +1,8 @@
 import path from "path";
 
+// The URL for the NPM registry.
+export const REGISTRY_URL = "https://registry.npmjs.org";
+
 // Base directory for output.
 export const BASE_OUTPUT_DIR = path.join(process.cwd(), "output");
 // Default path for package.json.

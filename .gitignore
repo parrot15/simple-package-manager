@@ -11,7 +11,7 @@
 /src/config/config.json
 
 # Compiled Javascript files (I'm using Typescript)
-*.js
+/dist
 
 # Generated output files
 /output
