@@ -7,11 +7,11 @@ import {
   BASE_OUTPUT_DIR,
   PACKAGE_JSON_PATH,
   NODE_MODULES_PATH,
+  LOCK_PATH,
   CACHE_PATH,
   REGISTRY_URL,
 } from "./constants";
-import { PackageInfo, PackageJson } from "./types";
-// import { PackageInfo } from "./graph";
+import { PackageInfo, PackageJson, DependencyGraph } from "./types";
 
 export async function checkPathExists(path: string): Promise<boolean> {
   try {
@@ -56,6 +56,21 @@ export async function getPackageJson(): Promise<PackageJson> {
 
   const packageJson = JSON.parse(await fs.readFile(PACKAGE_JSON_PATH, "utf-8"));
   return packageJson;
+}
+
+export async function saveLockFile(graph: DependencyGraph): Promise<void> {
+  // Lock file is just the entire dependency graph serialized into JSON.
+  await fs.writeFile(LOCK_PATH, JSON.stringify(graph, null, 2));
+  console.log(`Lock file saved at ${LOCK_PATH}`);
+}
+
+export async function readLockFile(): Promise<DependencyGraph | null> {
+  const lockFileExists = await checkPathExists(LOCK_PATH);
+  if (lockFileExists) {
+    const fileContents = await fs.readFile(LOCK_PATH, "utf8");
+    return JSON.parse(fileContents);
+  }
+  return null;
 }
 
 export async function resolveVersion(
@@ -124,9 +139,27 @@ export async function getPackageInfo(packageName: string, exactVersion: string):
       tarballUrl: response.data.dist.tarball,
       hash: response.data.dist.integrity,
       isDirectDependency: false,  // Default value of false, can be overridden.
-      // dependencies: [],  // Default value of empty, can be overriden.
-      dependencies: response.data.dependencies,
+      dependencies: [],  // Default value of empty, can be overriden.
+      // dependencies: response.data.dependencies,
     }
+
+    /**
+      const dependencyIdentifiers = await Promise.all(Object.entries(dependencies).map(
+        async ([depName, depVersion]) => {
+          const exactVersion = await resolveVersion(depName, depVersion as string);
+          return `${depName}@${exactVersion}`;
+        }
+      ));
+     */
+    const dependencyVersionRanges = response.data.dependencies || {};
+    const dependencyIdentifiers = await Promise.all(Object.entries(dependencyVersionRanges).map(
+      async ([depName, depVersionRange]) => {
+        const exactVersion = await resolveVersion(depName, depVersionRange as string);
+        return `${depName}@${exactVersion}`;
+      }
+    ));
+    packageInfo.dependencies = dependencyIdentifiers;
+
     packageInfoCache.set(packageIdentifier, packageInfo);
     return packageInfo;
   } catch (error) {

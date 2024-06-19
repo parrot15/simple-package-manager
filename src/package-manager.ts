@@ -1,6 +1,6 @@
 import { ensureOutputDirectoriesExist } from "./utils";
 import { addPackage } from "./add";
-import { installPackages } from "./install";
+import { determinePackageInstallation } from "./install";
 
 // Command line argument processing.
 async function main() {
@@ -23,7 +23,7 @@ async function main() {
       case "install":
         console.time("Total time taken");
         await ensureOutputDirectoriesExist();
-        await installPackages();
+        await determinePackageInstallation();
         console.timeEnd("Total time taken");
         break;
       default:

@@ -2,7 +2,6 @@ export interface PackageInfo {
   version: string;
   tarballUrl: string;
   hash: string;
-  // dependencies: DependencyGraph;
   isDirectDependency: boolean;
   dependencies: string[];
 }

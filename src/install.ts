@@ -2,30 +2,16 @@ import path from "path";
 import { execSync } from "child_process";
 import fs from "fs/promises";
 import axios from "axios";
-import { getPackageJson, doesHashMatch, checkPathExists, parsePackageIdentifier } from "./utils";
+import { getPackageJson, doesHashMatch, checkPathExists, parsePackageIdentifier, resolveVersion } from "./utils";
 import {
   didDependenciesChange,
   buildDependencyGraph,
 } from "./graph";
-import { CACHE_PATH, LOCK_PATH, NODE_MODULES_PATH } from "./constants";
-import { DependencyGraph } from "./types";
+import { saveLockFile, readLockFile } from "./utils";
+import { CACHE_PATH, NODE_MODULES_PATH } from "./constants";
+import { DependencyGraph, PackageInfo } from "./types";
 
-export async function saveLockFile(graph: DependencyGraph): Promise<void> {
-  // Lock file is just the entire dependency graph serialized into JSON.
-  await fs.writeFile(LOCK_PATH, JSON.stringify(graph, null, 2));
-  console.log(`Lock file saved at ${LOCK_PATH}`);
-}
-
-export async function readLockFile(): Promise<DependencyGraph | null> {
-  const lockFileExists = await checkPathExists(LOCK_PATH);
-  if (lockFileExists) {
-    const fileContents = await fs.readFile(LOCK_PATH, "utf8");
-    return JSON.parse(fileContents);
-  }
-  return null;
-}
-
-export async function installPackages(): Promise<void> {
+export async function determinePackageInstallation(): Promise<void> {
   // Read dependencies in package.json.
   const packageJson = await getPackageJson();
   const dependencies = packageJson.dependencies;
@@ -46,6 +32,7 @@ export async function installPackages(): Promise<void> {
       // Nothing changed, so just install from lock file.
       console.log("----- Installing from lock file -----");
       await installFromGraph(lockGraph);
+      await cleanupUnusedPackages(lockGraph);
       return;
     }
   }
@@ -53,8 +40,10 @@ export async function installPackages(): Promise<void> {
   // Lock file or dependencies changed, so do fresh install of all packages.
   console.log("----- Building dependency graph -----");
   let fullGraph: DependencyGraph = {};
-  for (const [pkg, version] of Object.entries(dependencies)) {
-    const graph = await buildDependencyGraph(pkg, version, true, fullGraph);
+  for (const [packageName, versionRange] of Object.entries(dependencies)) {
+    // const graph = await buildDependencyGraph(pkg, version, true, fullGraph);
+    const exactVersion = await resolveVersion(packageName, versionRange);
+    await buildDependencyGraph(packageName, exactVersion, true, fullGraph);
     // const graph = await buildDependencyGraph(pkg, version, true);
     // Object.assign(fullGraph, graph);
     // fullGraph = { ...fullGraph, ...graph };
@@ -62,196 +51,149 @@ export async function installPackages(): Promise<void> {
   console.log("----- Installing dependencies -----");
   console.log(`fullGraph:\n${JSON.stringify(fullGraph, null, 2)}`);
   await installFromGraph(fullGraph);
+  await cleanupUnusedPackages(fullGraph);
   await saveLockFile(fullGraph);
 }
 
-
-async function installFromGraph(graph: DependencyGraph): Promise<void> {
-  const installed = new Set<string>();
-
-  async function installPackage(packageIdentifier: string): Promise<void> {
-    if (installed.has(packageIdentifier)) {
-      console.log(`Package ${packageIdentifier} already installed, skipping.`);
-      return;
-    }
-
-    const packageInfo = graph[packageIdentifier];
-    if (!packageInfo) {
-      throw new Error(`Package ${packageIdentifier} not found in the graph.`);
-    }
-
-    // Recursively install all dependencies first
-    for (const dependency of packageInfo.dependencies) {
-      await installPackage(dependency);
-    }
-
-
-
-
-    // const [packageName, packageVersion] = packageIdentifier.split("@");
-    const [packageName, packageVersion] = parsePackageIdentifier(packageIdentifier);
-    const scopedDir = packageName.startsWith("@")
-        ? path.join(NODE_MODULES_PATH, packageName.split("/")[0])
-        : NODE_MODULES_PATH;
-    const packageDirsSplit = packageName.split("/");
-    if (packageDirsSplit && packageDirsSplit.length === 0) {
-      throw new Error(`Dependency name ${packageName} is invalid.`);
-    }
-    const packageDir = path.join(scopedDir, packageDirsSplit.pop() as string);
-    const packageDirExists = await checkPathExists(packageDir);
-    if (!packageDirExists) {
-      await fs.mkdir(packageDir, { recursive: true });
-    }
-
-    const tarFilename = `${packageName.replace("/", "-")}-${packageInfo.version}.tgz`;
-
-    let tarData;
-    const cacheTarPath = path.join(CACHE_PATH, tarFilename);
-    const isTarCached = await checkPathExists(cacheTarPath);
-
-    if (isTarCached) {
-      // The tarball is already stored in cache, so retrieve it.
-      console.log(`Using cached tarball for ${packageName}@${packageInfo.version}`);
-      tarData = await fs.readFile(cacheTarPath);
+// Prune any unused dependencies in the node_modules folder.
+async function cleanupUnusedPackages(graph: DependencyGraph): Promise<void> {
+  console.log(`INSIDE CLEANUP`);
+  // The packages currently in the node_modules folder.
+  const existingPackages = await fs.readdir(NODE_MODULES_PATH);
+  // The correct packages computed in the dependency graph.
+  const correctPackages = new Set<string>();
+  for (const key of Object.keys(graph)) {
+    const [ packageName ] = parsePackageIdentifier(key);
+    if (packageName.includes("/")) {
+      // Scoped package, so add both the scoped directory and
+      // the full package name.
+      const parts = packageName.split("/");
+      correctPackages.add(parts[0]);
+      correctPackages.add(packageName);
     } else {
-      // The tarball hasn't been cached, so download it.
-      console.log(`Downloading tarball from: ${packageInfo.tarballUrl}`);
-      const tarballResponse = await axios.get(packageInfo.tarballUrl, {
-        responseType: "arraybuffer",
-      });
-      tarData = tarballResponse.data;
+      correctPackages.add(packageName);
     }
-
-    // Validate the tarball regardless of whether it came from cache or registry.
-    const isPackageValid = doesHashMatch(tarData, packageInfo.hash);
-    if (isPackageValid) {
-      // The hashes matched - validation succeeded.
-      console.log(`Validation succeeded for ${packageName}@${packageInfo.version}`);
-      // Save tarball to cache if it wasn't already cached.
-      if (!isTarCached) {
-        console.log(`Caching tarball for ${packageName}@${packageInfo.version}`);
-        await fs.writeFile(cacheTarPath, tarData);
-      }
-      // Extract tarball contents directly from cache into node_modules.
-      execSync(`tar -xzf ${cacheTarPath} -C ${packageDir} --strip-components=1`);
-      console.log(`Extracted ${packageName}@${packageInfo.version}`);
-    } else {
-      // The hashes do not match - validation failed.
-      // Remove corrupted tar file from cache.
-      await fs.unlink(cacheTarPath);
-      throw new Error(`Validation failed for ${packageName}@${packageInfo.version}`);
-    }
-
-
-
-
-    installed.add(packageIdentifier);
   }
+  // const correctPackages = new Set(Object.keys(graph).map(key => {
+  //   const [ packageName ] = parsePackageIdentifier(key);
+  //   return packageName;
+  // }));
 
-  // Start the installation for all packages in the graph
-  for (const packageIdentifier in graph) {
-    await installPackage(packageIdentifier);
+  // Iterate through all packages currently in the node_modules folder.
+  for (const existingPackage of existingPackages) {
+    // The package is not in the dependency graph, so it must be a
+    // stale (unused) package.
+    if (!correctPackages.has(existingPackage)) {
+      // const cacheTarPath = path.join(CACHE_PATH, tarFilename);
+      const packagePath = path.join(NODE_MODULES_PATH, existingPackage);
+      console.log(`Removing unused package ${existingPackage}.`);
+      await fs.rm(packagePath, { recursive: true });
+    }
   }
 }
 
+async function installFromGraph(graph: DependencyGraph): Promise<void> {
+  // Start the installation for all packages in the graph
+  const installed = new Set<string>();
+  for (const packageIdentifier in graph) {
+    try {
+      await installPackage(packageIdentifier, graph, installed);
+    } catch (error: any) {
+      if (axios.isAxiosError(error)) {
+        const errorMessage = `Failed to install ${packageIdentifier}: ${error.message}`;
+        console.error(errorMessage);
+        if (error.response) {
+          console.error(
+            `HTTP status: ${error.response.status}. ${error.response.statusText}`,
+          );
+        }
+      } else if (error instanceof Error) {
+        console.error(error.message);
+      } else {
+        console.error(`An unknown error occurred.`);
+      }
+      process.exit(1);
+    }
+  }
+}
 
-// export async function installFromGraph(
-//   graph: DependencyGraph,
-//   installed: Set<string> = new Set(),
-// ): Promise<void> {
-//   for (const [packageIdentifier, packageDetails] of Object.entries(graph)) {
-//     // const packageIdentifier = `${packageName}@${packageDetails.version}`;
-//     if (installed.has(packageIdentifier)) {
-//       console.log(`Package ${packageIdentifier} already installed, skipping.`);
-//       continue;
-//     }
-//     // Check if packageDetails is undefined
-//     if (!packageDetails) {
-//       console.error(`Package details for ${packageIdentifier} are missing in the graph.`);
-//       continue; // Skip this iteration if package details are missing
-//     }
+async function installPackage(packageIdentifier: string, graph: DependencyGraph, installed: Set<string>): Promise<void> {
+  if (installed.has(packageIdentifier)) {
+    console.log(`Package ${packageIdentifier} already installed, skipping.`);
+    return;
+  }
 
-//     const [packageName, packageVersion] = packageIdentifier.split("@");
+  const packageInfo = graph[packageIdentifier];
+  if (!packageInfo) {
+    throw new Error(`Package ${packageIdentifier} not found in the graph.`);
+  }
 
-//     // try {
-//       const scopedDir = packageName.startsWith("@")
-//         ? path.join(NODE_MODULES_PATH, packageName.split("/")[0])
-//         : NODE_MODULES_PATH;
-//       const packageDirsSplit = packageName.split("/");
-//       if (packageDirsSplit && packageDirsSplit.length === 0) {
-//         throw new Error(`Dependency name ${packageName} is invalid.`);
-//       }
-//       const packageDir = path.join(scopedDir, packageDirsSplit.pop() as string);
-//       const packageDirExists = await checkPathExists(packageDir);
-//       if (!packageDirExists) {
-//         await fs.mkdir(packageDir, { recursive: true });
-//       }
+  // Recursively install all dependencies first
+  for (const dependency of packageInfo.dependencies) {
+    await installPackage(dependency, graph, installed);
+  }
 
-//       const tarFilename = `${packageName.replace("/", "-")}-${packageDetails.version}.tgz`;
+  const [ packageName ] = parsePackageIdentifier(packageIdentifier);
+  const packageDir = await preparePackageDirectory(packageName);
 
-//       let tarData;
-//       const cacheTarPath = path.join(CACHE_PATH, tarFilename);
-//       const isTarCached = await checkPathExists(cacheTarPath);
+  const tarFilename = `${packageName.replace("/", "-")}-${packageInfo.version}.tgz`;
+  const [ tarData, isTarCached ] = await retrieveTarball(packageName, packageInfo, tarFilename);
+  await extractTarball(packageName, packageInfo, tarFilename, tarData, isTarCached, packageDir);
 
-//       if (isTarCached) {
-//         // The tarball is already stored in cache, so retrieve it.
-//         console.log(`Using cached tarball for ${packageName}@${packageDetails.version}`);
-//         tarData = await fs.readFile(cacheTarPath);
-//       } else {
-//         // The tarball hasn't been cached, so download it.
-//         console.log(`Downloading tarball from: ${packageDetails.tarballUrl}`);
-//         const tarballResponse = await axios.get(packageDetails.tarballUrl, {
-//           responseType: "arraybuffer",
-//         });
-//         tarData = tarballResponse.data;
-//       }
+  installed.add(packageIdentifier);
+}
 
-//       // Validate the tarball regardless of whether it came from cache or registry.
-//       const isPackageValid = doesHashMatch(tarData, packageDetails.hash);
-//       if (isPackageValid) {
-//         // The hashes matched - validation succeeded.
-//         console.log(`Validation succeeded for ${packageName}@${packageDetails.version}`);
-//         // Save tarball to cache if it wasn't already cached.
-//         if (!isTarCached) {
-//           console.log(`Caching tarball for ${packageName}@${packageDetails.version}`);
-//           await fs.writeFile(cacheTarPath, tarData);
-//         }
-//         // Extract tarball contents directly from cache into node_modules.
-//         execSync(`tar -xzf ${cacheTarPath} -C ${packageDir} --strip-components=1`);
-//         console.log(`Extracted ${packageName}@${packageDetails.version}`);
-//         // Mark this package as installed.
-//         installed.add(packageIdentifier);
-//         // Continue traversing dependency graph.
-//         for (const depIdentifier of packageDetails.dependencies) {
-//           // await installFromGraph({ [depIdentifier]: graph[depIdentifier] }, installed);
-//           if (!graph[depIdentifier]) {
-//             console.error(`Dependency ${depIdentifier} not found in graph.`);
-//             continue; // Skip missing dependencies
-//           }
-//           await installFromGraph(graph, installed);
-//         }
-//         // await installFromGraph(packageDetails.dependencies, installed);
-//       } else {
-//         // The hashes do not match - validation failed.
-//         // Remove corrupted tar file from cache.
-//         await fs.unlink(cacheTarPath);
-//         throw new Error(`Validation failed for ${packageName}@${packageDetails.version}`);
-//       }
-//     // } catch (error: any) {
-//     //   if (axios.isAxiosError(error)) {
-//     //     const errorMessage = `Failed to install ${packageName}@${packageDetails.version}: ${error.message}`;
-//     //     console.error(errorMessage);
-//     //     if (error.response) {
-//     //       console.error(
-//     //         `HTTP status: ${error.response.status}. ${error.response.statusText}`,
-//     //       );
-//     //     }
-//     //   } else if (error instanceof Error) {
-//     //     console.error(error.message);
-//     //   } else {
-//     //     console.error(`An unknown error occurred.`);
-//     //   }
-//     //   process.exit(1);
-//     // }
-//   }
-// }
+async function preparePackageDirectory(packageName: string): Promise<string> {
+  const scopedDir = packageName.startsWith("@")
+      ? path.join(NODE_MODULES_PATH, packageName.split("/")[0])
+      : NODE_MODULES_PATH;
+  const packageDirsSplit = packageName.split("/");
+  if (packageDirsSplit.length === 0) {
+    throw new Error(`Dependency name ${packageName} is invalid.`);
+  }
+  const packageDir = path.join(scopedDir, packageDirsSplit.pop() as string);
+  const packageDirExists = await checkPathExists(packageDir);
+  if (!packageDirExists) {
+    await fs.mkdir(packageDir, { recursive: true });
+  }
+
+  return packageDir;
+}
+
+async function retrieveTarball(packageName: string, packageInfo: PackageInfo, tarFilename: string): Promise<[Buffer, boolean]> {
+  const cacheTarPath = path.join(CACHE_PATH, tarFilename);
+  const isTarCached = await checkPathExists(cacheTarPath);
+
+  if (isTarCached) {
+    // The tarball is already stored in cache, so retrieve it.
+    console.log(`Using cached tarball for ${packageName}@${packageInfo.version}`);
+    return [await fs.readFile(cacheTarPath), true];
+  } else {
+    // The tarball hasn't been cached, so download it.
+    console.log(`Downloading tarball from: ${packageInfo.tarballUrl}`);
+    const tarballResponse = await axios.get(packageInfo.tarballUrl, {
+      responseType: "arraybuffer",
+    });
+    return [tarballResponse.data, false];
+  }
+}
+
+async function extractTarball(packageName: string, packageInfo: PackageInfo, tarFilename: string, tarData: Buffer, isTarCached: boolean, packageDir: string): Promise<void> {
+  const cacheTarPath = path.join(CACHE_PATH, tarFilename);
+  const isPackageValid = doesHashMatch(tarData, packageInfo.hash);
+  if (isPackageValid) {
+    // Save tarball to cache if it wasn't already cached.
+    if (!isTarCached) {
+      console.log(`Caching tarball for ${packageName}@${packageInfo.version}`);
+      await fs.writeFile(cacheTarPath, tarData);
+    }
+    // Extract tarball contents directly from cache into node_modules.
+    execSync(`tar -xzf ${cacheTarPath} -C ${packageDir} --strip-components=1`);
+    console.log(`Extracted ${packageName}@${packageInfo.version}`);
+  } else {
+    // The hashes do not match - validation failed.
+    // Remove corrupted tar file from cache.
+    await fs.unlink(cacheTarPath);
+    throw new Error(`Validation failed for ${packageName}@${packageInfo.version}`);
+  }
+}
