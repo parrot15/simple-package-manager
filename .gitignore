@@ -4,11 +4,14 @@
 # MacOS stuff
 .DS_Store
 
-# Compiled Javascript files (I'm using Typescript)
-*.js
-
 # Dependencies
 /node_modules
 
 # Config file
 /src/config/config.json
+
+# Compiled Javascript files (I'm using Typescript)
+*.js
+
+# Generated output files
+/output
