@@ -1,0 +1,1066 @@
+'node_modules' directory does not exist. Creating...
+'.cache' directory does not exist. Creating...
+----- Building dependency graph -----
+Fetching version info for https://registry.npmjs.org/axios.
+Fetching package info for https://registry.npmjs.org/axios/1.7.2.
+Fetching version info for https://registry.npmjs.org/follow-redirects.
+Fetching version info for https://registry.npmjs.org/form-data.
+Fetching version info for https://registry.npmjs.org/proxy-from-env.
+Fetching package info for https://registry.npmjs.org/follow-redirects/1.15.6.
+Fetching package info for https://registry.npmjs.org/form-data/4.0.0.
+Fetching version info for https://registry.npmjs.org/asynckit.
+Fetching version info for https://registry.npmjs.org/combined-stream.
+Fetching version info for https://registry.npmjs.org/mime-types.
+Fetching package info for https://registry.npmjs.org/asynckit/0.4.0.
+Fetching package info for https://registry.npmjs.org/combined-stream/1.0.8.
+Fetching version info for https://registry.npmjs.org/delayed-stream.
+Fetching package info for https://registry.npmjs.org/delayed-stream/1.0.0.
+Fetching package info for https://registry.npmjs.org/mime-types/2.1.35.
+Fetching version info for https://registry.npmjs.org/mime-db.
+Fetching package info for https://registry.npmjs.org/mime-db/1.52.0.
+Fetching package info for https://registry.npmjs.org/proxy-from-env/1.1.0.
+Fetching version info for https://registry.npmjs.org/crypto.
+Fetching package info for https://registry.npmjs.org/crypto/1.0.1.
+Fetching version info for https://registry.npmjs.org/lru-cache.
+Fetching package info for https://registry.npmjs.org/lru-cache/10.2.2.
+Fetching version info for https://registry.npmjs.org/semver.
+Fetching package info for https://registry.npmjs.org/semver/7.6.2.
+Fetching version info for https://registry.npmjs.org/ts-node.
+Fetching package info for https://registry.npmjs.org/ts-node/10.9.2.
+Fetching version info for https://registry.npmjs.org/@cspotcode/source-map-support.
+Fetching version info for https://registry.npmjs.org/@tsconfig/node10.
+Fetching version info for https://registry.npmjs.org/@tsconfig/node12.
+Fetching version info for https://registry.npmjs.org/@tsconfig/node14.
+Fetching version info for https://registry.npmjs.org/@tsconfig/node16.
+Fetching version info for https://registry.npmjs.org/acorn.
+Fetching version info for https://registry.npmjs.org/acorn-walk.
+Fetching version info for https://registry.npmjs.org/arg.
+Fetching version info for https://registry.npmjs.org/create-require.
+Fetching version info for https://registry.npmjs.org/diff.
+Fetching version info for https://registry.npmjs.org/make-error.
+Fetching version info for https://registry.npmjs.org/v8-compile-cache-lib.
+Fetching version info for https://registry.npmjs.org/yn.
+Fetching package info for https://registry.npmjs.org/@cspotcode/source-map-support/0.8.1.
+Fetching version info for https://registry.npmjs.org/@jridgewell/trace-mapping.
+Fetching package info for https://registry.npmjs.org/@jridgewell/trace-mapping/0.3.9.
+Fetching version info for https://registry.npmjs.org/@jridgewell/resolve-uri.
+Fetching version info for https://registry.npmjs.org/@jridgewell/sourcemap-codec.
+Fetching package info for https://registry.npmjs.org/@jridgewell/resolve-uri/3.1.2.
+Fetching package info for https://registry.npmjs.org/@jridgewell/sourcemap-codec/1.4.15.
+Fetching package info for https://registry.npmjs.org/@tsconfig/node10/1.0.11.
+Fetching package info for https://registry.npmjs.org/@tsconfig/node12/1.0.11.
+Fetching package info for https://registry.npmjs.org/@tsconfig/node14/1.0.3.
+Fetching package info for https://registry.npmjs.org/@tsconfig/node16/1.0.4.
+Fetching package info for https://registry.npmjs.org/acorn/8.12.0.
+Fetching package info for https://registry.npmjs.org/acorn-walk/8.3.3.
+Fetching version info for https://registry.npmjs.org/acorn.
+Fetching package info for https://registry.npmjs.org/arg/4.1.3.
+Fetching package info for https://registry.npmjs.org/create-require/1.1.1.
+Fetching package info for https://registry.npmjs.org/diff/4.0.2.
+Fetching package info for https://registry.npmjs.org/make-error/1.3.6.
+Fetching package info for https://registry.npmjs.org/v8-compile-cache-lib/3.0.1.
+Fetching package info for https://registry.npmjs.org/yn/3.1.1.
+Fetching version info for https://registry.npmjs.org/@types/node.
+Fetching package info for https://registry.npmjs.org/@types/node/20.14.6.
+Fetching version info for https://registry.npmjs.org/undici-types.
+Fetching package info for https://registry.npmjs.org/undici-types/5.26.5.
+Fetching version info for https://registry.npmjs.org/@typescript-eslint/eslint-plugin.
+Fetching package info for https://registry.npmjs.org/@typescript-eslint/eslint-plugin/6.21.0.
+Fetching version info for https://registry.npmjs.org/debug.
+Fetching version info for https://registry.npmjs.org/ignore.
+Fetching version info for https://registry.npmjs.org/semver.
+Fetching version info for https://registry.npmjs.org/graphemer.
+Fetching version info for https://registry.npmjs.org/ts-api-utils.
+Fetching version info for https://registry.npmjs.org/natural-compare.
+Fetching version info for https://registry.npmjs.org/@typescript-eslint/utils.
+Fetching version info for https://registry.npmjs.org/@eslint-community/regexpp.
+Fetching version info for https://registry.npmjs.org/@typescript-eslint/type-utils.
+Fetching version info for https://registry.npmjs.org/@typescript-eslint/visitor-keys.
+Fetching version info for https://registry.npmjs.org/@typescript-eslint/scope-manager.
+Fetching package info for https://registry.npmjs.org/debug/4.3.5.
+Fetching version info for https://registry.npmjs.org/ms.
+Fetching package info for https://registry.npmjs.org/ms/2.1.2.
+Fetching package info for https://registry.npmjs.org/ignore/5.3.1.
+Fetching package info for https://registry.npmjs.org/graphemer/1.4.0.
+Fetching package info for https://registry.npmjs.org/ts-api-utils/1.3.0.
+Fetching package info for https://registry.npmjs.org/natural-compare/1.4.0.
+Fetching package info for https://registry.npmjs.org/@typescript-eslint/utils/6.21.0.
+Retrieving version info semver@^7.5.4 from cache.
+Fetching version info for https://registry.npmjs.org/@types/semver.
+Fetching version info for https://registry.npmjs.org/@types/json-schema.
+Fetching version info for https://registry.npmjs.org/@typescript-eslint/types.
+Fetching version info for https://registry.npmjs.org/@eslint-community/eslint-utils.
+Retrieving version info @typescript-eslint/scope-manager@6.21.0 from cache.
+Fetching version info for https://registry.npmjs.org/@typescript-eslint/typescript-estree.
+Fetching package info for https://registry.npmjs.org/@types/semver/7.5.8.
+Fetching package info for https://registry.npmjs.org/@types/json-schema/7.0.15.
+Fetching package info for https://registry.npmjs.org/@typescript-eslint/types/6.21.0.
+Fetching package info for https://registry.npmjs.org/@eslint-community/eslint-utils/4.4.0.
+Fetching version info for https://registry.npmjs.org/eslint-visitor-keys.
+Fetching package info for https://registry.npmjs.org/eslint-visitor-keys/3.4.3.
+Fetching package info for https://registry.npmjs.org/@typescript-eslint/scope-manager/6.21.0.
+Retrieving version info @typescript-eslint/types@6.21.0 from cache.
+Retrieving version info @typescript-eslint/visitor-keys@6.21.0 from cache.
+Fetching package info for https://registry.npmjs.org/@typescript-eslint/visitor-keys/6.21.0.
+Fetching version info for https://registry.npmjs.org/eslint-visitor-keys.
+Retrieving version info @typescript-eslint/types@6.21.0 from cache.
+Fetching package info for https://registry.npmjs.org/@typescript-eslint/typescript-estree/6.21.0.
+Retrieving version info debug@^4.3.4 from cache.
+Fetching version info for https://registry.npmjs.org/globby.
+Retrieving version info semver@^7.5.4 from cache.
+Fetching version info for https://registry.npmjs.org/is-glob.
+Fetching version info for https://registry.npmjs.org/minimatch.
+Retrieving version info ts-api-utils@^1.0.1 from cache.
+Retrieving version info @typescript-eslint/types@6.21.0 from cache.
+Retrieving version info @typescript-eslint/visitor-keys@6.21.0 from cache.
+Fetching package info for https://registry.npmjs.org/globby/11.1.0.
+Fetching version info for https://registry.npmjs.org/array-union.
+Fetching version info for https://registry.npmjs.org/dir-glob.
+Fetching version info for https://registry.npmjs.org/fast-glob.
+Fetching version info for https://registry.npmjs.org/ignore.
+Fetching version info for https://registry.npmjs.org/merge2.
+Fetching version info for https://registry.npmjs.org/slash.
+Fetching package info for https://registry.npmjs.org/array-union/2.1.0.
+Fetching package info for https://registry.npmjs.org/dir-glob/3.0.1.
+Fetching version info for https://registry.npmjs.org/path-type.
+Fetching package info for https://registry.npmjs.org/path-type/4.0.0.
+Fetching package info for https://registry.npmjs.org/fast-glob/3.3.2.
+Fetching version info for https://registry.npmjs.org/@nodelib/fs.stat.
+Fetching version info for https://registry.npmjs.org/@nodelib/fs.walk.
+Fetching version info for https://registry.npmjs.org/glob-parent.
+Fetching version info for https://registry.npmjs.org/merge2.
+Fetching version info for https://registry.npmjs.org/micromatch.
+Fetching package info for https://registry.npmjs.org/@nodelib/fs.stat/2.0.5.
+Fetching package info for https://registry.npmjs.org/@nodelib/fs.walk/1.2.8.
+Fetching version info for https://registry.npmjs.org/@nodelib/fs.scandir.
+Fetching version info for https://registry.npmjs.org/fastq.
+Fetching package info for https://registry.npmjs.org/@nodelib/fs.scandir/2.1.5.
+Fetching version info for https://registry.npmjs.org/@nodelib/fs.stat.
+Fetching version info for https://registry.npmjs.org/run-parallel.
+Fetching package info for https://registry.npmjs.org/run-parallel/1.2.0.
+Fetching version info for https://registry.npmjs.org/queue-microtask.
+Fetching package info for https://registry.npmjs.org/queue-microtask/1.2.3.
+Fetching package info for https://registry.npmjs.org/fastq/1.17.1.
+Fetching version info for https://registry.npmjs.org/reusify.
+Fetching package info for https://registry.npmjs.org/reusify/1.0.4.
+Fetching package info for https://registry.npmjs.org/glob-parent/5.1.2.
+Fetching version info for https://registry.npmjs.org/is-glob.
+Fetching package info for https://registry.npmjs.org/is-glob/4.0.3.
+Fetching version info for https://registry.npmjs.org/is-extglob.
+Fetching package info for https://registry.npmjs.org/is-extglob/2.1.1.
+Fetching package info for https://registry.npmjs.org/merge2/1.4.1.
+Fetching package info for https://registry.npmjs.org/micromatch/4.0.7.
+Fetching version info for https://registry.npmjs.org/braces.
+Fetching version info for https://registry.npmjs.org/picomatch.
+Fetching package info for https://registry.npmjs.org/braces/3.0.3.
+Fetching version info for https://registry.npmjs.org/fill-range.
+Fetching package info for https://registry.npmjs.org/fill-range/7.1.1.
+Fetching version info for https://registry.npmjs.org/to-regex-range.
+Fetching package info for https://registry.npmjs.org/to-regex-range/5.0.1.
+Fetching version info for https://registry.npmjs.org/is-number.
+Fetching package info for https://registry.npmjs.org/is-number/7.0.0.
+Fetching package info for https://registry.npmjs.org/picomatch/2.3.1.
+Fetching package info for https://registry.npmjs.org/slash/3.0.0.
+Fetching package info for https://registry.npmjs.org/minimatch/9.0.3.
+Fetching version info for https://registry.npmjs.org/brace-expansion.
+Fetching package info for https://registry.npmjs.org/brace-expansion/2.0.1.
+Fetching version info for https://registry.npmjs.org/balanced-match.
+Fetching package info for https://registry.npmjs.org/balanced-match/1.0.2.
+Fetching package info for https://registry.npmjs.org/@eslint-community/regexpp/4.10.1.
+Fetching package info for https://registry.npmjs.org/@typescript-eslint/type-utils/6.21.0.
+Retrieving version info debug@^4.3.4 from cache.
+Retrieving version info ts-api-utils@^1.0.1 from cache.
+Retrieving version info @typescript-eslint/utils@6.21.0 from cache.
+Retrieving version info @typescript-eslint/typescript-estree@6.21.0 from cache.
+Fetching version info for https://registry.npmjs.org/@typescript-eslint/parser.
+Fetching package info for https://registry.npmjs.org/@typescript-eslint/parser/6.21.0.
+Retrieving version info debug@^4.3.4 from cache.
+Retrieving version info @typescript-eslint/types@6.21.0 from cache.
+Retrieving version info @typescript-eslint/visitor-keys@6.21.0 from cache.
+Retrieving version info @typescript-eslint/scope-manager@6.21.0 from cache.
+Retrieving version info @typescript-eslint/typescript-estree@6.21.0 from cache.
+Fetching version info for https://registry.npmjs.org/eslint.
+Fetching package info for https://registry.npmjs.org/eslint/8.57.0.
+Fetching version info for https://registry.npmjs.org/ajv.
+Fetching version info for https://registry.npmjs.org/levn.
+Fetching version info for https://registry.npmjs.org/chalk.
+Fetching version info for https://registry.npmjs.org/debug.
+Fetching version info for https://registry.npmjs.org/espree.
+Retrieving version info ignore@^5.2.0 from cache.
+Fetching version info for https://registry.npmjs.org/esquery.
+Fetching version info for https://registry.npmjs.org/esutils.
+Fetching version info for https://registry.npmjs.org/find-up.
+Fetching version info for https://registry.npmjs.org/globals.
+Fetching version info for https://registry.npmjs.org/is-glob.
+Fetching version info for https://registry.npmjs.org/js-yaml.
+Fetching version info for https://registry.npmjs.org/doctrine.
+Retrieving version info graphemer@^1.4.0 from cache.
+Fetching version info for https://registry.npmjs.org/minimatch.
+Fetching version info for https://registry.npmjs.org/@eslint/js.
+Fetching version info for https://registry.npmjs.org/optionator.
+Fetching version info for https://registry.npmjs.org/strip-ansi.
+Fetching version info for https://registry.npmjs.org/text-table.
+Fetching version info for https://registry.npmjs.org/cross-spawn.
+Fetching version info for https://registry.npmjs.org/glob-parent.
+Fetching version info for https://registry.npmjs.org/imurmurhash.
+Fetching version info for https://registry.npmjs.org/eslint-scope.
+Fetching version info for https://registry.npmjs.org/lodash.merge.
+Fetching version info for https://registry.npmjs.org/is-path-inside.
+Fetching version info for https://registry.npmjs.org/fast-deep-equal.
+Retrieving version info natural-compare@^1.4.0 from cache.
+Fetching version info for https://registry.npmjs.org/@eslint/eslintrc.
+Fetching version info for https://registry.npmjs.org/@nodelib/fs.walk.
+Fetching version info for https://registry.npmjs.org/file-entry-cache.
+Fetching version info for https://registry.npmjs.org/eslint-visitor-keys.
+Fetching version info for https://registry.npmjs.org/escape-string-regexp.
+Fetching version info for https://registry.npmjs.org/@ungap/structured-clone.
+Fetching version info for https://registry.npmjs.org/@eslint-community/regexpp.
+Fetching version info for https://registry.npmjs.org/@humanwhocodes/config-array.
+Fetching version info for https://registry.npmjs.org/@eslint-community/eslint-utils.
+Fetching version info for https://registry.npmjs.org/@humanwhocodes/module-importer.
+Fetching version info for https://registry.npmjs.org/json-stable-stringify-without-jsonify.
+Fetching package info for https://registry.npmjs.org/ajv/6.12.6.
+Fetching version info for https://registry.npmjs.org/fast-deep-equal.
+Fetching version info for https://registry.npmjs.org/fast-json-stable-stringify.
+Fetching version info for https://registry.npmjs.org/json-schema-traverse.
+Fetching version info for https://registry.npmjs.org/uri-js.
+Fetching package info for https://registry.npmjs.org/fast-deep-equal/3.1.3.
+Fetching package info for https://registry.npmjs.org/fast-json-stable-stringify/2.1.0.
+Fetching package info for https://registry.npmjs.org/json-schema-traverse/0.4.1.
+Fetching package info for https://registry.npmjs.org/uri-js/4.4.1.
+Fetching version info for https://registry.npmjs.org/punycode.
+Fetching package info for https://registry.npmjs.org/punycode/2.3.1.
+Fetching package info for https://registry.npmjs.org/levn/0.4.1.
+Fetching version info for https://registry.npmjs.org/prelude-ls.
+Fetching version info for https://registry.npmjs.org/type-check.
+Fetching package info for https://registry.npmjs.org/prelude-ls/1.2.1.
+Fetching package info for https://registry.npmjs.org/type-check/0.4.0.
+Retrieving version info prelude-ls@^1.2.1 from cache.
+Fetching package info for https://registry.npmjs.org/chalk/4.1.2.
+Fetching version info for https://registry.npmjs.org/ansi-styles.
+Fetching version info for https://registry.npmjs.org/supports-color.
+Fetching package info for https://registry.npmjs.org/ansi-styles/4.3.0.
+Fetching version info for https://registry.npmjs.org/color-convert.
+Fetching package info for https://registry.npmjs.org/color-convert/2.0.1.
+Fetching version info for https://registry.npmjs.org/color-name.
+Fetching package info for https://registry.npmjs.org/color-name/1.1.4.
+Fetching package info for https://registry.npmjs.org/supports-color/7.2.0.
+Fetching version info for https://registry.npmjs.org/has-flag.
+Fetching package info for https://registry.npmjs.org/has-flag/4.0.0.
+Fetching package info for https://registry.npmjs.org/espree/9.6.1.
+Fetching version info for https://registry.npmjs.org/acorn.
+Fetching version info for https://registry.npmjs.org/acorn-jsx.
+Retrieving version info eslint-visitor-keys@^3.4.1 from cache.
+Fetching package info for https://registry.npmjs.org/acorn-jsx/5.3.2.
+Fetching package info for https://registry.npmjs.org/esquery/1.5.0.
+Fetching version info for https://registry.npmjs.org/estraverse.
+Fetching package info for https://registry.npmjs.org/estraverse/5.3.0.
+Fetching package info for https://registry.npmjs.org/esutils/2.0.3.
+Fetching package info for https://registry.npmjs.org/find-up/5.0.0.
+Fetching version info for https://registry.npmjs.org/locate-path.
+Fetching version info for https://registry.npmjs.org/path-exists.
+Fetching package info for https://registry.npmjs.org/locate-path/6.0.0.
+Fetching version info for https://registry.npmjs.org/p-locate.
+Fetching package info for https://registry.npmjs.org/p-locate/5.0.0.
+Fetching version info for https://registry.npmjs.org/p-limit.
+Fetching package info for https://registry.npmjs.org/p-limit/3.1.0.
+Fetching version info for https://registry.npmjs.org/yocto-queue.
+Fetching package info for https://registry.npmjs.org/yocto-queue/0.1.0.
+Fetching package info for https://registry.npmjs.org/path-exists/4.0.0.
+Fetching package info for https://registry.npmjs.org/globals/13.24.0.
+Fetching version info for https://registry.npmjs.org/type-fest.
+Fetching package info for https://registry.npmjs.org/type-fest/0.20.2.
+Fetching package info for https://registry.npmjs.org/js-yaml/4.1.0.
+Fetching version info for https://registry.npmjs.org/argparse.
+Fetching package info for https://registry.npmjs.org/argparse/2.0.1.
+Fetching package info for https://registry.npmjs.org/doctrine/3.0.0.
+Retrieving version info esutils@^2.0.2 from cache.
+Fetching package info for https://registry.npmjs.org/minimatch/3.1.2.
+Fetching version info for https://registry.npmjs.org/brace-expansion.
+Fetching package info for https://registry.npmjs.org/brace-expansion/1.1.11.
+Retrieving version info balanced-match@^1.0.0 from cache.
+Fetching version info for https://registry.npmjs.org/concat-map.
+Fetching package info for https://registry.npmjs.org/concat-map/0.0.1.
+Fetching package info for https://registry.npmjs.org/@eslint/js/8.57.0.
+Fetching package info for https://registry.npmjs.org/optionator/0.9.4.
+Retrieving version info prelude-ls@^1.2.1 from cache.
+Fetching version info for https://registry.npmjs.org/deep-is.
+Fetching version info for https://registry.npmjs.org/word-wrap.
+Fetching version info for https://registry.npmjs.org/type-check.
+Retrieving version info levn@^0.4.1 from cache.
+Fetching version info for https://registry.npmjs.org/fast-levenshtein.
+Fetching package info for https://registry.npmjs.org/deep-is/0.1.4.
+Fetching package info for https://registry.npmjs.org/word-wrap/1.2.5.
+Fetching package info for https://registry.npmjs.org/fast-levenshtein/2.0.6.
+Fetching package info for https://registry.npmjs.org/strip-ansi/6.0.1.
+Fetching version info for https://registry.npmjs.org/ansi-regex.
+Fetching package info for https://registry.npmjs.org/ansi-regex/5.0.1.
+Fetching package info for https://registry.npmjs.org/text-table/0.2.0.
+Fetching package info for https://registry.npmjs.org/cross-spawn/7.0.3.
+Fetching version info for https://registry.npmjs.org/path-key.
+Fetching version info for https://registry.npmjs.org/shebang-command.
+Fetching version info for https://registry.npmjs.org/which.
+Fetching package info for https://registry.npmjs.org/path-key/3.1.1.
+Fetching package info for https://registry.npmjs.org/shebang-command/2.0.0.
+Fetching version info for https://registry.npmjs.org/shebang-regex.
+Fetching package info for https://registry.npmjs.org/shebang-regex/3.0.0.
+Fetching package info for https://registry.npmjs.org/which/2.0.2.
+Fetching version info for https://registry.npmjs.org/isexe.
+Fetching package info for https://registry.npmjs.org/isexe/2.0.0.
+Fetching package info for https://registry.npmjs.org/glob-parent/6.0.2.
+Retrieving version info is-glob@^4.0.3 from cache.
+Fetching package info for https://registry.npmjs.org/imurmurhash/0.1.4.
+Fetching package info for https://registry.npmjs.org/eslint-scope/7.2.2.
+Fetching version info for https://registry.npmjs.org/esrecurse.
+Fetching version info for https://registry.npmjs.org/estraverse.
+Fetching package info for https://registry.npmjs.org/esrecurse/4.3.0.
+Retrieving version info estraverse@^5.2.0 from cache.
+Fetching package info for https://registry.npmjs.org/lodash.merge/4.6.2.
+Fetching package info for https://registry.npmjs.org/is-path-inside/3.0.3.
+Fetching package info for https://registry.npmjs.org/@eslint/eslintrc/2.1.4.
+Retrieving version info ajv@^6.12.4 from cache.
+Retrieving version info debug@^4.3.2 from cache.
+Fetching version info for https://registry.npmjs.org/espree.
+Retrieving version info globals@^13.19.0 from cache.
+Retrieving version info ignore@^5.2.0 from cache.
+Fetching version info for https://registry.npmjs.org/import-fresh.
+Retrieving version info js-yaml@^4.1.0 from cache.
+Retrieving version info minimatch@^3.1.2 from cache.
+Fetching version info for https://registry.npmjs.org/strip-json-comments.
+Fetching package info for https://registry.npmjs.org/import-fresh/3.3.0.
+Fetching version info for https://registry.npmjs.org/parent-module.
+Fetching version info for https://registry.npmjs.org/resolve-from.
+Fetching package info for https://registry.npmjs.org/parent-module/1.0.1.
+Fetching version info for https://registry.npmjs.org/callsites.
+Fetching package info for https://registry.npmjs.org/callsites/3.1.0.
+Fetching package info for https://registry.npmjs.org/resolve-from/4.0.0.
+Fetching package info for https://registry.npmjs.org/strip-json-comments/3.1.1.
+Fetching package info for https://registry.npmjs.org/file-entry-cache/6.0.1.
+Fetching version info for https://registry.npmjs.org/flat-cache.
+Fetching package info for https://registry.npmjs.org/flat-cache/3.2.0.
+Fetching version info for https://registry.npmjs.org/flatted.
+Fetching version info for https://registry.npmjs.org/keyv.
+Fetching version info for https://registry.npmjs.org/rimraf.
+Fetching package info for https://registry.npmjs.org/flatted/3.3.1.
+Fetching package info for https://registry.npmjs.org/keyv/4.5.4.
+Fetching version info for https://registry.npmjs.org/json-buffer.
+Fetching package info for https://registry.npmjs.org/json-buffer/3.0.1.
+Fetching package info for https://registry.npmjs.org/rimraf/3.0.2.
+Fetching version info for https://registry.npmjs.org/glob.
+Fetching package info for https://registry.npmjs.org/glob/7.2.3.
+Fetching version info for https://registry.npmjs.org/once.
+Fetching version info for https://registry.npmjs.org/inflight.
+Fetching version info for https://registry.npmjs.org/inherits.
+Fetching version info for https://registry.npmjs.org/minimatch.
+Fetching version info for https://registry.npmjs.org/fs.realpath.
+Fetching version info for https://registry.npmjs.org/path-is-absolute.
+Fetching package info for https://registry.npmjs.org/once/1.4.0.
+Fetching version info for https://registry.npmjs.org/wrappy.
+Fetching package info for https://registry.npmjs.org/wrappy/1.0.2.
+Fetching package info for https://registry.npmjs.org/inflight/1.0.6.
+Retrieving version info once@^1.3.0 from cache.
+Retrieving version info wrappy@1 from cache.
+Fetching package info for https://registry.npmjs.org/inherits/2.0.4.
+Fetching package info for https://registry.npmjs.org/fs.realpath/1.0.0.
+Fetching package info for https://registry.npmjs.org/path-is-absolute/1.0.1.
+Fetching package info for https://registry.npmjs.org/escape-string-regexp/4.0.0.
+Fetching package info for https://registry.npmjs.org/@ungap/structured-clone/1.2.0.
+Fetching package info for https://registry.npmjs.org/@humanwhocodes/config-array/0.11.14.
+Fetching version info for https://registry.npmjs.org/debug.
+Fetching version info for https://registry.npmjs.org/minimatch.
+Fetching version info for https://registry.npmjs.org/@humanwhocodes/object-schema.
+Fetching package info for https://registry.npmjs.org/@humanwhocodes/object-schema/2.0.3.
+Fetching package info for https://registry.npmjs.org/@humanwhocodes/module-importer/1.0.1.
+Fetching package info for https://registry.npmjs.org/json-stable-stringify-without-jsonify/1.0.1.
+Fetching version info for https://registry.npmjs.org/eslint-config-prettier.
+Fetching package info for https://registry.npmjs.org/eslint-config-prettier/9.1.0.
+Fetching version info for https://registry.npmjs.org/prettier.
+Fetching package info for https://registry.npmjs.org/prettier/3.3.2.
+Fetching version info for https://registry.npmjs.org/typescript.
+Fetching package info for https://registry.npmjs.org/typescript/5.4.5.
+----- Installing dependencies -----
+Downloading tarball from: https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.15.6.tgz
+Caching tarball for follow-redirects@1.15.6
+Extracted follow-redirects@1.15.6
+Downloading tarball from: https://registry.npmjs.org/asynckit/-/asynckit-0.4.0.tgz
+Caching tarball for asynckit@0.4.0
+Extracted asynckit@0.4.0
+Downloading tarball from: https://registry.npmjs.org/delayed-stream/-/delayed-stream-1.0.0.tgz
+Caching tarball for delayed-stream@1.0.0
+Extracted delayed-stream@1.0.0
+Downloading tarball from: https://registry.npmjs.org/combined-stream/-/combined-stream-1.0.8.tgz
+Caching tarball for combined-stream@1.0.8
+Extracted combined-stream@1.0.8
+Downloading tarball from: https://registry.npmjs.org/mime-db/-/mime-db-1.52.0.tgz
+Caching tarball for mime-db@1.52.0
+Extracted mime-db@1.52.0
+Downloading tarball from: https://registry.npmjs.org/mime-types/-/mime-types-2.1.35.tgz
+Caching tarball for mime-types@2.1.35
+Extracted mime-types@2.1.35
+Downloading tarball from: https://registry.npmjs.org/form-data/-/form-data-4.0.0.tgz
+Caching tarball for form-data@4.0.0
+Extracted form-data@4.0.0
+Downloading tarball from: https://registry.npmjs.org/proxy-from-env/-/proxy-from-env-1.1.0.tgz
+Caching tarball for proxy-from-env@1.1.0
+Extracted proxy-from-env@1.1.0
+Downloading tarball from: https://registry.npmjs.org/axios/-/axios-1.7.2.tgz
+Caching tarball for axios@1.7.2
+Extracted axios@1.7.2
+Package follow-redirects@1.15.6 already installed, skipping.
+Package form-data@4.0.0 already installed, skipping.
+Package asynckit@0.4.0 already installed, skipping.
+Package combined-stream@1.0.8 already installed, skipping.
+Package delayed-stream@1.0.0 already installed, skipping.
+Package mime-types@2.1.35 already installed, skipping.
+Package mime-db@1.52.0 already installed, skipping.
+Package proxy-from-env@1.1.0 already installed, skipping.
+Downloading tarball from: https://registry.npmjs.org/crypto/-/crypto-1.0.1.tgz
+Caching tarball for crypto@1.0.1
+Extracted crypto@1.0.1
+Downloading tarball from: https://registry.npmjs.org/lru-cache/-/lru-cache-10.2.2.tgz
+Caching tarball for lru-cache@10.2.2
+Extracted lru-cache@10.2.2
+Downloading tarball from: https://registry.npmjs.org/semver/-/semver-7.6.2.tgz
+Caching tarball for semver@7.6.2
+Extracted semver@7.6.2
+Downloading tarball from: https://registry.npmjs.org/@jridgewell/resolve-uri/-/resolve-uri-3.1.2.tgz
+Caching tarball for @jridgewell/resolve-uri@3.1.2
+Extracted @jridgewell/resolve-uri@3.1.2
+Downloading tarball from: https://registry.npmjs.org/@jridgewell/sourcemap-codec/-/sourcemap-codec-1.4.15.tgz
+Caching tarball for @jridgewell/sourcemap-codec@1.4.15
+Extracted @jridgewell/sourcemap-codec@1.4.15
+Downloading tarball from: https://registry.npmjs.org/@jridgewell/trace-mapping/-/trace-mapping-0.3.9.tgz
+Caching tarball for @jridgewell/trace-mapping@0.3.9
+Extracted @jridgewell/trace-mapping@0.3.9
+Downloading tarball from: https://registry.npmjs.org/@cspotcode/source-map-support/-/source-map-support-0.8.1.tgz
+Caching tarball for @cspotcode/source-map-support@0.8.1
+Extracted @cspotcode/source-map-support@0.8.1
+Downloading tarball from: https://registry.npmjs.org/@tsconfig/node10/-/node10-1.0.11.tgz
+Caching tarball for @tsconfig/node10@1.0.11
+Extracted @tsconfig/node10@1.0.11
+Downloading tarball from: https://registry.npmjs.org/@tsconfig/node12/-/node12-1.0.11.tgz
+Caching tarball for @tsconfig/node12@1.0.11
+Extracted @tsconfig/node12@1.0.11
+Downloading tarball from: https://registry.npmjs.org/@tsconfig/node14/-/node14-1.0.3.tgz
+Caching tarball for @tsconfig/node14@1.0.3
+Extracted @tsconfig/node14@1.0.3
+Downloading tarball from: https://registry.npmjs.org/@tsconfig/node16/-/node16-1.0.4.tgz
+Caching tarball for @tsconfig/node16@1.0.4
+Extracted @tsconfig/node16@1.0.4
+Downloading tarball from: https://registry.npmjs.org/acorn/-/acorn-8.12.0.tgz
+Caching tarball for acorn@8.12.0
+Extracted acorn@8.12.0
+Package acorn@8.12.0 already installed, skipping.
+Downloading tarball from: https://registry.npmjs.org/acorn-walk/-/acorn-walk-8.3.3.tgz
+Caching tarball for acorn-walk@8.3.3
+Extracted acorn-walk@8.3.3
+Downloading tarball from: https://registry.npmjs.org/arg/-/arg-4.1.3.tgz
+Caching tarball for arg@4.1.3
+Extracted arg@4.1.3
+Downloading tarball from: https://registry.npmjs.org/create-require/-/create-require-1.1.1.tgz
+Caching tarball for create-require@1.1.1
+Extracted create-require@1.1.1
+Downloading tarball from: https://registry.npmjs.org/diff/-/diff-4.0.2.tgz
+Caching tarball for diff@4.0.2
+Extracted diff@4.0.2
+Downloading tarball from: https://registry.npmjs.org/make-error/-/make-error-1.3.6.tgz
+Caching tarball for make-error@1.3.6
+Extracted make-error@1.3.6
+Downloading tarball from: https://registry.npmjs.org/v8-compile-cache-lib/-/v8-compile-cache-lib-3.0.1.tgz
+Caching tarball for v8-compile-cache-lib@3.0.1
+Extracted v8-compile-cache-lib@3.0.1
+Downloading tarball from: https://registry.npmjs.org/yn/-/yn-3.1.1.tgz
+Caching tarball for yn@3.1.1
+Extracted yn@3.1.1
+Downloading tarball from: https://registry.npmjs.org/ts-node/-/ts-node-10.9.2.tgz
+Caching tarball for ts-node@10.9.2
+Extracted ts-node@10.9.2
+Package @cspotcode/source-map-support@0.8.1 already installed, skipping.
+Package @jridgewell/trace-mapping@0.3.9 already installed, skipping.
+Package @jridgewell/resolve-uri@3.1.2 already installed, skipping.
+Package @jridgewell/sourcemap-codec@1.4.15 already installed, skipping.
+Package @tsconfig/node10@1.0.11 already installed, skipping.
+Package @tsconfig/node12@1.0.11 already installed, skipping.
+Package @tsconfig/node14@1.0.3 already installed, skipping.
+Package @tsconfig/node16@1.0.4 already installed, skipping.
+Package acorn@8.12.0 already installed, skipping.
+Package acorn-walk@8.3.3 already installed, skipping.
+Package arg@4.1.3 already installed, skipping.
+Package create-require@1.1.1 already installed, skipping.
+Package diff@4.0.2 already installed, skipping.
+Package make-error@1.3.6 already installed, skipping.
+Package v8-compile-cache-lib@3.0.1 already installed, skipping.
+Package yn@3.1.1 already installed, skipping.
+Downloading tarball from: https://registry.npmjs.org/undici-types/-/undici-types-5.26.5.tgz
+Caching tarball for undici-types@5.26.5
+Extracted undici-types@5.26.5
+Downloading tarball from: https://registry.npmjs.org/@types/node/-/node-20.14.6.tgz
+Caching tarball for @types/node@20.14.6
+Extracted @types/node@20.14.6
+Package undici-types@5.26.5 already installed, skipping.
+Downloading tarball from: https://registry.npmjs.org/ms/-/ms-2.1.2.tgz
+Caching tarball for ms@2.1.2
+Extracted ms@2.1.2
+Downloading tarball from: https://registry.npmjs.org/debug/-/debug-4.3.5.tgz
+Caching tarball for debug@4.3.5
+Extracted debug@4.3.5
+Downloading tarball from: https://registry.npmjs.org/ignore/-/ignore-5.3.1.tgz
+Caching tarball for ignore@5.3.1
+Extracted ignore@5.3.1
+Package semver@7.6.2 already installed, skipping.
+Downloading tarball from: https://registry.npmjs.org/graphemer/-/graphemer-1.4.0.tgz
+Caching tarball for graphemer@1.4.0
+Extracted graphemer@1.4.0
+Downloading tarball from: https://registry.npmjs.org/ts-api-utils/-/ts-api-utils-1.3.0.tgz
+Caching tarball for ts-api-utils@1.3.0
+Extracted ts-api-utils@1.3.0
+Downloading tarball from: https://registry.npmjs.org/natural-compare/-/natural-compare-1.4.0.tgz
+Caching tarball for natural-compare@1.4.0
+Extracted natural-compare@1.4.0
+Package semver@7.6.2 already installed, skipping.
+Downloading tarball from: https://registry.npmjs.org/@types/semver/-/semver-7.5.8.tgz
+Caching tarball for @types/semver@7.5.8
+Extracted @types/semver@7.5.8
+Downloading tarball from: https://registry.npmjs.org/@types/json-schema/-/json-schema-7.0.15.tgz
+Caching tarball for @types/json-schema@7.0.15
+Extracted @types/json-schema@7.0.15
+Downloading tarball from: https://registry.npmjs.org/@typescript-eslint/types/-/types-6.21.0.tgz
+Caching tarball for @typescript-eslint/types@6.21.0
+Extracted @typescript-eslint/types@6.21.0
+Downloading tarball from: https://registry.npmjs.org/eslint-visitor-keys/-/eslint-visitor-keys-3.4.3.tgz
+Caching tarball for eslint-visitor-keys@3.4.3
+Extracted eslint-visitor-keys@3.4.3
+Downloading tarball from: https://registry.npmjs.org/@eslint-community/eslint-utils/-/eslint-utils-4.4.0.tgz
+Caching tarball for @eslint-community/eslint-utils@4.4.0
+Extracted @eslint-community/eslint-utils@4.4.0
+Package @typescript-eslint/types@6.21.0 already installed, skipping.
+Package eslint-visitor-keys@3.4.3 already installed, skipping.
+Package @typescript-eslint/types@6.21.0 already installed, skipping.
+Downloading tarball from: https://registry.npmjs.org/@typescript-eslint/visitor-keys/-/visitor-keys-6.21.0.tgz
+Caching tarball for @typescript-eslint/visitor-keys@6.21.0
+Extracted @typescript-eslint/visitor-keys@6.21.0
+Downloading tarball from: https://registry.npmjs.org/@typescript-eslint/scope-manager/-/scope-manager-6.21.0.tgz
+Caching tarball for @typescript-eslint/scope-manager@6.21.0
+Extracted @typescript-eslint/scope-manager@6.21.0
+Package debug@4.3.5 already installed, skipping.
+Downloading tarball from: https://registry.npmjs.org/array-union/-/array-union-2.1.0.tgz
+Caching tarball for array-union@2.1.0
+Extracted array-union@2.1.0
+Downloading tarball from: https://registry.npmjs.org/path-type/-/path-type-4.0.0.tgz
+Caching tarball for path-type@4.0.0
+Extracted path-type@4.0.0
+Downloading tarball from: https://registry.npmjs.org/dir-glob/-/dir-glob-3.0.1.tgz
+Caching tarball for dir-glob@3.0.1
+Extracted dir-glob@3.0.1
+Downloading tarball from: https://registry.npmjs.org/@nodelib/fs.stat/-/fs.stat-2.0.5.tgz
+Caching tarball for @nodelib/fs.stat@2.0.5
+Extracted @nodelib/fs.stat@2.0.5
+Package @nodelib/fs.stat@2.0.5 already installed, skipping.
+Downloading tarball from: https://registry.npmjs.org/queue-microtask/-/queue-microtask-1.2.3.tgz
+Caching tarball for queue-microtask@1.2.3
+Extracted queue-microtask@1.2.3
+Downloading tarball from: https://registry.npmjs.org/run-parallel/-/run-parallel-1.2.0.tgz
+Caching tarball for run-parallel@1.2.0
+Extracted run-parallel@1.2.0
+Downloading tarball from: https://registry.npmjs.org/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz
+Caching tarball for @nodelib/fs.scandir@2.1.5
+Extracted @nodelib/fs.scandir@2.1.5
+Downloading tarball from: https://registry.npmjs.org/reusify/-/reusify-1.0.4.tgz
+Caching tarball for reusify@1.0.4
+Extracted reusify@1.0.4
+Downloading tarball from: https://registry.npmjs.org/fastq/-/fastq-1.17.1.tgz
+Caching tarball for fastq@1.17.1
+Extracted fastq@1.17.1
+Downloading tarball from: https://registry.npmjs.org/@nodelib/fs.walk/-/fs.walk-1.2.8.tgz
+Caching tarball for @nodelib/fs.walk@1.2.8
+Extracted @nodelib/fs.walk@1.2.8
+Downloading tarball from: https://registry.npmjs.org/is-extglob/-/is-extglob-2.1.1.tgz
+Caching tarball for is-extglob@2.1.1
+Extracted is-extglob@2.1.1
+Downloading tarball from: https://registry.npmjs.org/is-glob/-/is-glob-4.0.3.tgz
+Caching tarball for is-glob@4.0.3
+Extracted is-glob@4.0.3
+Downloading tarball from: https://registry.npmjs.org/glob-parent/-/glob-parent-5.1.2.tgz
+Caching tarball for glob-parent@5.1.2
+Extracted glob-parent@5.1.2
+Downloading tarball from: https://registry.npmjs.org/merge2/-/merge2-1.4.1.tgz
+Caching tarball for merge2@1.4.1
+Extracted merge2@1.4.1
+Downloading tarball from: https://registry.npmjs.org/is-number/-/is-number-7.0.0.tgz
+Caching tarball for is-number@7.0.0
+Extracted is-number@7.0.0
+Downloading tarball from: https://registry.npmjs.org/to-regex-range/-/to-regex-range-5.0.1.tgz
+Caching tarball for to-regex-range@5.0.1
+Extracted to-regex-range@5.0.1
+Downloading tarball from: https://registry.npmjs.org/fill-range/-/fill-range-7.1.1.tgz
+Caching tarball for fill-range@7.1.1
+Extracted fill-range@7.1.1
+Downloading tarball from: https://registry.npmjs.org/braces/-/braces-3.0.3.tgz
+Caching tarball for braces@3.0.3
+Extracted braces@3.0.3
+Downloading tarball from: https://registry.npmjs.org/picomatch/-/picomatch-2.3.1.tgz
+Caching tarball for picomatch@2.3.1
+Extracted picomatch@2.3.1
+Downloading tarball from: https://registry.npmjs.org/micromatch/-/micromatch-4.0.7.tgz
+Caching tarball for micromatch@4.0.7
+Extracted micromatch@4.0.7
+Downloading tarball from: https://registry.npmjs.org/fast-glob/-/fast-glob-3.3.2.tgz
+Caching tarball for fast-glob@3.3.2
+Extracted fast-glob@3.3.2
+Package ignore@5.3.1 already installed, skipping.
+Package merge2@1.4.1 already installed, skipping.
+Downloading tarball from: https://registry.npmjs.org/slash/-/slash-3.0.0.tgz
+Caching tarball for slash@3.0.0
+Extracted slash@3.0.0
+Downloading tarball from: https://registry.npmjs.org/globby/-/globby-11.1.0.tgz
+Caching tarball for globby@11.1.0
+Extracted globby@11.1.0
+Package semver@7.6.2 already installed, skipping.
+Package is-glob@4.0.3 already installed, skipping.
+Downloading tarball from: https://registry.npmjs.org/balanced-match/-/balanced-match-1.0.2.tgz
+Caching tarball for balanced-match@1.0.2
+Extracted balanced-match@1.0.2
+Downloading tarball from: https://registry.npmjs.org/brace-expansion/-/brace-expansion-2.0.1.tgz
+Caching tarball for brace-expansion@2.0.1
+Extracted brace-expansion@2.0.1
+Downloading tarball from: https://registry.npmjs.org/minimatch/-/minimatch-9.0.3.tgz
+Caching tarball for minimatch@9.0.3
+Extracted minimatch@9.0.3
+Package ts-api-utils@1.3.0 already installed, skipping.
+Package @typescript-eslint/types@6.21.0 already installed, skipping.
+Package @typescript-eslint/visitor-keys@6.21.0 already installed, skipping.
+Downloading tarball from: https://registry.npmjs.org/@typescript-eslint/typescript-estree/-/typescript-estree-6.21.0.tgz
+Caching tarball for @typescript-eslint/typescript-estree@6.21.0
+Extracted @typescript-eslint/typescript-estree@6.21.0
+Downloading tarball from: https://registry.npmjs.org/@typescript-eslint/utils/-/utils-6.21.0.tgz
+Caching tarball for @typescript-eslint/utils@6.21.0
+Extracted @typescript-eslint/utils@6.21.0
+Downloading tarball from: https://registry.npmjs.org/@eslint-community/regexpp/-/regexpp-4.10.1.tgz
+Caching tarball for @eslint-community/regexpp@4.10.1
+Extracted @eslint-community/regexpp@4.10.1
+Package debug@4.3.5 already installed, skipping.
+Package ts-api-utils@1.3.0 already installed, skipping.
+Package @typescript-eslint/utils@6.21.0 already installed, skipping.
+Package @typescript-eslint/typescript-estree@6.21.0 already installed, skipping.
+Downloading tarball from: https://registry.npmjs.org/@typescript-eslint/type-utils/-/type-utils-6.21.0.tgz
+Caching tarball for @typescript-eslint/type-utils@6.21.0
+Extracted @typescript-eslint/type-utils@6.21.0
+Package @typescript-eslint/visitor-keys@6.21.0 already installed, skipping.
+Package @typescript-eslint/scope-manager@6.21.0 already installed, skipping.
+Downloading tarball from: https://registry.npmjs.org/@typescript-eslint/eslint-plugin/-/eslint-plugin-6.21.0.tgz
+Caching tarball for @typescript-eslint/eslint-plugin@6.21.0
+Extracted @typescript-eslint/eslint-plugin@6.21.0
+Package debug@4.3.5 already installed, skipping.
+Package ms@2.1.2 already installed, skipping.
+Package ignore@5.3.1 already installed, skipping.
+Package graphemer@1.4.0 already installed, skipping.
+Package ts-api-utils@1.3.0 already installed, skipping.
+Package natural-compare@1.4.0 already installed, skipping.
+Package @typescript-eslint/utils@6.21.0 already installed, skipping.
+Package @types/semver@7.5.8 already installed, skipping.
+Package @types/json-schema@7.0.15 already installed, skipping.
+Package @typescript-eslint/types@6.21.0 already installed, skipping.
+Package @eslint-community/eslint-utils@4.4.0 already installed, skipping.
+Package eslint-visitor-keys@3.4.3 already installed, skipping.
+Package @typescript-eslint/scope-manager@6.21.0 already installed, skipping.
+Package @typescript-eslint/visitor-keys@6.21.0 already installed, skipping.
+Package @typescript-eslint/typescript-estree@6.21.0 already installed, skipping.
+Package globby@11.1.0 already installed, skipping.
+Package array-union@2.1.0 already installed, skipping.
+Package dir-glob@3.0.1 already installed, skipping.
+Package path-type@4.0.0 already installed, skipping.
+Package fast-glob@3.3.2 already installed, skipping.
+Package @nodelib/fs.stat@2.0.5 already installed, skipping.
+Package @nodelib/fs.walk@1.2.8 already installed, skipping.
+Package @nodelib/fs.scandir@2.1.5 already installed, skipping.
+Package run-parallel@1.2.0 already installed, skipping.
+Package queue-microtask@1.2.3 already installed, skipping.
+Package fastq@1.17.1 already installed, skipping.
+Package reusify@1.0.4 already installed, skipping.
+Package glob-parent@5.1.2 already installed, skipping.
+Package is-glob@4.0.3 already installed, skipping.
+Package is-extglob@2.1.1 already installed, skipping.
+Package merge2@1.4.1 already installed, skipping.
+Package micromatch@4.0.7 already installed, skipping.
+Package braces@3.0.3 already installed, skipping.
+Package fill-range@7.1.1 already installed, skipping.
+Package to-regex-range@5.0.1 already installed, skipping.
+Package is-number@7.0.0 already installed, skipping.
+Package picomatch@2.3.1 already installed, skipping.
+Package slash@3.0.0 already installed, skipping.
+Package minimatch@9.0.3 already installed, skipping.
+Package brace-expansion@2.0.1 already installed, skipping.
+Package balanced-match@1.0.2 already installed, skipping.
+Package @eslint-community/regexpp@4.10.1 already installed, skipping.
+Package @typescript-eslint/type-utils@6.21.0 already installed, skipping.
+Package debug@4.3.5 already installed, skipping.
+Package @typescript-eslint/types@6.21.0 already installed, skipping.
+Package @typescript-eslint/visitor-keys@6.21.0 already installed, skipping.
+Package @typescript-eslint/scope-manager@6.21.0 already installed, skipping.
+Package @typescript-eslint/typescript-estree@6.21.0 already installed, skipping.
+Downloading tarball from: https://registry.npmjs.org/@typescript-eslint/parser/-/parser-6.21.0.tgz
+Caching tarball for @typescript-eslint/parser@6.21.0
+Extracted @typescript-eslint/parser@6.21.0
+Downloading tarball from: https://registry.npmjs.org/fast-deep-equal/-/fast-deep-equal-3.1.3.tgz
+Caching tarball for fast-deep-equal@3.1.3
+Extracted fast-deep-equal@3.1.3
+Downloading tarball from: https://registry.npmjs.org/fast-json-stable-stringify/-/fast-json-stable-stringify-2.1.0.tgz
+Caching tarball for fast-json-stable-stringify@2.1.0
+Extracted fast-json-stable-stringify@2.1.0
+Downloading tarball from: https://registry.npmjs.org/json-schema-traverse/-/json-schema-traverse-0.4.1.tgz
+Caching tarball for json-schema-traverse@0.4.1
+Extracted json-schema-traverse@0.4.1
+Downloading tarball from: https://registry.npmjs.org/punycode/-/punycode-2.3.1.tgz
+Caching tarball for punycode@2.3.1
+Extracted punycode@2.3.1
+Downloading tarball from: https://registry.npmjs.org/uri-js/-/uri-js-4.4.1.tgz
+Caching tarball for uri-js@4.4.1
+Extracted uri-js@4.4.1
+Downloading tarball from: https://registry.npmjs.org/ajv/-/ajv-6.12.6.tgz
+Caching tarball for ajv@6.12.6
+Extracted ajv@6.12.6
+Downloading tarball from: https://registry.npmjs.org/prelude-ls/-/prelude-ls-1.2.1.tgz
+Caching tarball for prelude-ls@1.2.1
+Extracted prelude-ls@1.2.1
+Package prelude-ls@1.2.1 already installed, skipping.
+Downloading tarball from: https://registry.npmjs.org/type-check/-/type-check-0.4.0.tgz
+Caching tarball for type-check@0.4.0
+Extracted type-check@0.4.0
+Downloading tarball from: https://registry.npmjs.org/levn/-/levn-0.4.1.tgz
+Caching tarball for levn@0.4.1
+Extracted levn@0.4.1
+Downloading tarball from: https://registry.npmjs.org/color-name/-/color-name-1.1.4.tgz
+Caching tarball for color-name@1.1.4
+Extracted color-name@1.1.4
+Downloading tarball from: https://registry.npmjs.org/color-convert/-/color-convert-2.0.1.tgz
+Caching tarball for color-convert@2.0.1
+Extracted color-convert@2.0.1
+Downloading tarball from: https://registry.npmjs.org/ansi-styles/-/ansi-styles-4.3.0.tgz
+Caching tarball for ansi-styles@4.3.0
+Extracted ansi-styles@4.3.0
+Downloading tarball from: https://registry.npmjs.org/has-flag/-/has-flag-4.0.0.tgz
+Caching tarball for has-flag@4.0.0
+Extracted has-flag@4.0.0
+Downloading tarball from: https://registry.npmjs.org/supports-color/-/supports-color-7.2.0.tgz
+Caching tarball for supports-color@7.2.0
+Extracted supports-color@7.2.0
+Downloading tarball from: https://registry.npmjs.org/chalk/-/chalk-4.1.2.tgz
+Caching tarball for chalk@4.1.2
+Extracted chalk@4.1.2
+Package debug@4.3.5 already installed, skipping.
+Package acorn@8.12.0 already installed, skipping.
+Downloading tarball from: https://registry.npmjs.org/acorn-jsx/-/acorn-jsx-5.3.2.tgz
+Caching tarball for acorn-jsx@5.3.2
+Extracted acorn-jsx@5.3.2
+Package eslint-visitor-keys@3.4.3 already installed, skipping.
+Downloading tarball from: https://registry.npmjs.org/espree/-/espree-9.6.1.tgz
+Caching tarball for espree@9.6.1
+Extracted espree@9.6.1
+Package ignore@5.3.1 already installed, skipping.
+Downloading tarball from: https://registry.npmjs.org/estraverse/-/estraverse-5.3.0.tgz
+Caching tarball for estraverse@5.3.0
+Extracted estraverse@5.3.0
+Downloading tarball from: https://registry.npmjs.org/esquery/-/esquery-1.5.0.tgz
+Caching tarball for esquery@1.5.0
+Extracted esquery@1.5.0
+Downloading tarball from: https://registry.npmjs.org/esutils/-/esutils-2.0.3.tgz
+Caching tarball for esutils@2.0.3
+Extracted esutils@2.0.3
+Downloading tarball from: https://registry.npmjs.org/yocto-queue/-/yocto-queue-0.1.0.tgz
+Caching tarball for yocto-queue@0.1.0
+Extracted yocto-queue@0.1.0
+Downloading tarball from: https://registry.npmjs.org/p-limit/-/p-limit-3.1.0.tgz
+Caching tarball for p-limit@3.1.0
+Extracted p-limit@3.1.0
+Downloading tarball from: https://registry.npmjs.org/p-locate/-/p-locate-5.0.0.tgz
+Caching tarball for p-locate@5.0.0
+Extracted p-locate@5.0.0
+Downloading tarball from: https://registry.npmjs.org/locate-path/-/locate-path-6.0.0.tgz
+Caching tarball for locate-path@6.0.0
+Extracted locate-path@6.0.0
+Downloading tarball from: https://registry.npmjs.org/path-exists/-/path-exists-4.0.0.tgz
+Caching tarball for path-exists@4.0.0
+Extracted path-exists@4.0.0
+Downloading tarball from: https://registry.npmjs.org/find-up/-/find-up-5.0.0.tgz
+Caching tarball for find-up@5.0.0
+Extracted find-up@5.0.0
+Downloading tarball from: https://registry.npmjs.org/type-fest/-/type-fest-0.20.2.tgz
+Caching tarball for type-fest@0.20.2
+Extracted type-fest@0.20.2
+Downloading tarball from: https://registry.npmjs.org/globals/-/globals-13.24.0.tgz
+Caching tarball for globals@13.24.0
+Extracted globals@13.24.0
+Package is-glob@4.0.3 already installed, skipping.
+Downloading tarball from: https://registry.npmjs.org/argparse/-/argparse-2.0.1.tgz
+Caching tarball for argparse@2.0.1
+Extracted argparse@2.0.1
+Downloading tarball from: https://registry.npmjs.org/js-yaml/-/js-yaml-4.1.0.tgz
+Caching tarball for js-yaml@4.1.0
+Extracted js-yaml@4.1.0
+Package esutils@2.0.3 already installed, skipping.
+Downloading tarball from: https://registry.npmjs.org/doctrine/-/doctrine-3.0.0.tgz
+Caching tarball for doctrine@3.0.0
+Extracted doctrine@3.0.0
+Package graphemer@1.4.0 already installed, skipping.
+Package balanced-match@1.0.2 already installed, skipping.
+Downloading tarball from: https://registry.npmjs.org/concat-map/-/concat-map-0.0.1.tgz
+Caching tarball for concat-map@0.0.1
+Extracted concat-map@0.0.1
+Downloading tarball from: https://registry.npmjs.org/brace-expansion/-/brace-expansion-1.1.11.tgz
+Caching tarball for brace-expansion@1.1.11
+Extracted brace-expansion@1.1.11
+Downloading tarball from: https://registry.npmjs.org/minimatch/-/minimatch-3.1.2.tgz
+Caching tarball for minimatch@3.1.2
+Extracted minimatch@3.1.2
+Downloading tarball from: https://registry.npmjs.org/@eslint/js/-/js-8.57.0.tgz
+Caching tarball for @eslint/js@8.57.0
+Extracted @eslint/js@8.57.0
+Package prelude-ls@1.2.1 already installed, skipping.
+Downloading tarball from: https://registry.npmjs.org/deep-is/-/deep-is-0.1.4.tgz
+Caching tarball for deep-is@0.1.4
+Extracted deep-is@0.1.4
+Downloading tarball from: https://registry.npmjs.org/word-wrap/-/word-wrap-1.2.5.tgz
+Caching tarball for word-wrap@1.2.5
+Extracted word-wrap@1.2.5
+Package type-check@0.4.0 already installed, skipping.
+Package levn@0.4.1 already installed, skipping.
+Downloading tarball from: https://registry.npmjs.org/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz
+Caching tarball for fast-levenshtein@2.0.6
+Extracted fast-levenshtein@2.0.6
+Downloading tarball from: https://registry.npmjs.org/optionator/-/optionator-0.9.4.tgz
+Caching tarball for optionator@0.9.4
+Extracted optionator@0.9.4
+Downloading tarball from: https://registry.npmjs.org/ansi-regex/-/ansi-regex-5.0.1.tgz
+Caching tarball for ansi-regex@5.0.1
+Extracted ansi-regex@5.0.1
+Downloading tarball from: https://registry.npmjs.org/strip-ansi/-/strip-ansi-6.0.1.tgz
+Caching tarball for strip-ansi@6.0.1
+Extracted strip-ansi@6.0.1
+Downloading tarball from: https://registry.npmjs.org/text-table/-/text-table-0.2.0.tgz
+Caching tarball for text-table@0.2.0
+Extracted text-table@0.2.0
+Downloading tarball from: https://registry.npmjs.org/path-key/-/path-key-3.1.1.tgz
+Caching tarball for path-key@3.1.1
+Extracted path-key@3.1.1
+Downloading tarball from: https://registry.npmjs.org/shebang-regex/-/shebang-regex-3.0.0.tgz
+Caching tarball for shebang-regex@3.0.0
+Extracted shebang-regex@3.0.0
+Downloading tarball from: https://registry.npmjs.org/shebang-command/-/shebang-command-2.0.0.tgz
+Caching tarball for shebang-command@2.0.0
+Extracted shebang-command@2.0.0
+Downloading tarball from: https://registry.npmjs.org/isexe/-/isexe-2.0.0.tgz
+Caching tarball for isexe@2.0.0
+Extracted isexe@2.0.0
+Downloading tarball from: https://registry.npmjs.org/which/-/which-2.0.2.tgz
+Caching tarball for which@2.0.2
+Extracted which@2.0.2
+Downloading tarball from: https://registry.npmjs.org/cross-spawn/-/cross-spawn-7.0.3.tgz
+Caching tarball for cross-spawn@7.0.3
+Extracted cross-spawn@7.0.3
+Package is-glob@4.0.3 already installed, skipping.
+Downloading tarball from: https://registry.npmjs.org/glob-parent/-/glob-parent-6.0.2.tgz
+Caching tarball for glob-parent@6.0.2
+Extracted glob-parent@6.0.2
+Downloading tarball from: https://registry.npmjs.org/imurmurhash/-/imurmurhash-0.1.4.tgz
+Caching tarball for imurmurhash@0.1.4
+Extracted imurmurhash@0.1.4
+Package estraverse@5.3.0 already installed, skipping.
+Downloading tarball from: https://registry.npmjs.org/esrecurse/-/esrecurse-4.3.0.tgz
+Caching tarball for esrecurse@4.3.0
+Extracted esrecurse@4.3.0
+Package estraverse@5.3.0 already installed, skipping.
+Downloading tarball from: https://registry.npmjs.org/eslint-scope/-/eslint-scope-7.2.2.tgz
+Caching tarball for eslint-scope@7.2.2
+Extracted eslint-scope@7.2.2
+Downloading tarball from: https://registry.npmjs.org/lodash.merge/-/lodash.merge-4.6.2.tgz
+Caching tarball for lodash.merge@4.6.2
+Extracted lodash.merge@4.6.2
+Downloading tarball from: https://registry.npmjs.org/is-path-inside/-/is-path-inside-3.0.3.tgz
+Caching tarball for is-path-inside@3.0.3
+Extracted is-path-inside@3.0.3
+Package fast-deep-equal@3.1.3 already installed, skipping.
+Package natural-compare@1.4.0 already installed, skipping.
+Package ajv@6.12.6 already installed, skipping.
+Package debug@4.3.5 already installed, skipping.
+Package espree@9.6.1 already installed, skipping.
+Package globals@13.24.0 already installed, skipping.
+Package ignore@5.3.1 already installed, skipping.
+Downloading tarball from: https://registry.npmjs.org/callsites/-/callsites-3.1.0.tgz
+Caching tarball for callsites@3.1.0
+Extracted callsites@3.1.0
+Downloading tarball from: https://registry.npmjs.org/parent-module/-/parent-module-1.0.1.tgz
+Caching tarball for parent-module@1.0.1
+Extracted parent-module@1.0.1
+Downloading tarball from: https://registry.npmjs.org/resolve-from/-/resolve-from-4.0.0.tgz
+Caching tarball for resolve-from@4.0.0
+Extracted resolve-from@4.0.0
+Downloading tarball from: https://registry.npmjs.org/import-fresh/-/import-fresh-3.3.0.tgz
+Caching tarball for import-fresh@3.3.0
+Extracted import-fresh@3.3.0
+Package js-yaml@4.1.0 already installed, skipping.
+Package minimatch@3.1.2 already installed, skipping.
+Downloading tarball from: https://registry.npmjs.org/strip-json-comments/-/strip-json-comments-3.1.1.tgz
+Caching tarball for strip-json-comments@3.1.1
+Extracted strip-json-comments@3.1.1
+Downloading tarball from: https://registry.npmjs.org/@eslint/eslintrc/-/eslintrc-2.1.4.tgz
+Caching tarball for @eslint/eslintrc@2.1.4
+Extracted @eslint/eslintrc@2.1.4
+Package @nodelib/fs.walk@1.2.8 already installed, skipping.
+Downloading tarball from: https://registry.npmjs.org/flatted/-/flatted-3.3.1.tgz
+Caching tarball for flatted@3.3.1
+Extracted flatted@3.3.1
+Downloading tarball from: https://registry.npmjs.org/json-buffer/-/json-buffer-3.0.1.tgz
+Caching tarball for json-buffer@3.0.1
+Extracted json-buffer@3.0.1
+Downloading tarball from: https://registry.npmjs.org/keyv/-/keyv-4.5.4.tgz
+Caching tarball for keyv@4.5.4
+Extracted keyv@4.5.4
+Downloading tarball from: https://registry.npmjs.org/wrappy/-/wrappy-1.0.2.tgz
+Caching tarball for wrappy@1.0.2
+Extracted wrappy@1.0.2
+Downloading tarball from: https://registry.npmjs.org/once/-/once-1.4.0.tgz
+Caching tarball for once@1.4.0
+Extracted once@1.4.0
+Package once@1.4.0 already installed, skipping.
+Package wrappy@1.0.2 already installed, skipping.
+Downloading tarball from: https://registry.npmjs.org/inflight/-/inflight-1.0.6.tgz
+Caching tarball for inflight@1.0.6
+Extracted inflight@1.0.6
+Downloading tarball from: https://registry.npmjs.org/inherits/-/inherits-2.0.4.tgz
+Caching tarball for inherits@2.0.4
+Extracted inherits@2.0.4
+Package minimatch@3.1.2 already installed, skipping.
+Downloading tarball from: https://registry.npmjs.org/fs.realpath/-/fs.realpath-1.0.0.tgz
+Caching tarball for fs.realpath@1.0.0
+Extracted fs.realpath@1.0.0
+Downloading tarball from: https://registry.npmjs.org/path-is-absolute/-/path-is-absolute-1.0.1.tgz
+Caching tarball for path-is-absolute@1.0.1
+Extracted path-is-absolute@1.0.1
+Downloading tarball from: https://registry.npmjs.org/glob/-/glob-7.2.3.tgz
+Caching tarball for glob@7.2.3
+Extracted glob@7.2.3
+Downloading tarball from: https://registry.npmjs.org/rimraf/-/rimraf-3.0.2.tgz
+Caching tarball for rimraf@3.0.2
+Extracted rimraf@3.0.2
+Downloading tarball from: https://registry.npmjs.org/flat-cache/-/flat-cache-3.2.0.tgz
+Caching tarball for flat-cache@3.2.0
+Extracted flat-cache@3.2.0
+Downloading tarball from: https://registry.npmjs.org/file-entry-cache/-/file-entry-cache-6.0.1.tgz
+Caching tarball for file-entry-cache@6.0.1
+Extracted file-entry-cache@6.0.1
+Package eslint-visitor-keys@3.4.3 already installed, skipping.
+Downloading tarball from: https://registry.npmjs.org/escape-string-regexp/-/escape-string-regexp-4.0.0.tgz
+Caching tarball for escape-string-regexp@4.0.0
+Extracted escape-string-regexp@4.0.0
+Downloading tarball from: https://registry.npmjs.org/@ungap/structured-clone/-/structured-clone-1.2.0.tgz
+Caching tarball for @ungap/structured-clone@1.2.0
+Extracted @ungap/structured-clone@1.2.0
+Package @eslint-community/regexpp@4.10.1 already installed, skipping.
+Package debug@4.3.5 already installed, skipping.
+Package minimatch@3.1.2 already installed, skipping.
+Downloading tarball from: https://registry.npmjs.org/@humanwhocodes/object-schema/-/object-schema-2.0.3.tgz
+Caching tarball for @humanwhocodes/object-schema@2.0.3
+Extracted @humanwhocodes/object-schema@2.0.3
+Downloading tarball from: https://registry.npmjs.org/@humanwhocodes/config-array/-/config-array-0.11.14.tgz
+Caching tarball for @humanwhocodes/config-array@0.11.14
+Extracted @humanwhocodes/config-array@0.11.14
+Package @eslint-community/eslint-utils@4.4.0 already installed, skipping.
+Downloading tarball from: https://registry.npmjs.org/@humanwhocodes/module-importer/-/module-importer-1.0.1.tgz
+Caching tarball for @humanwhocodes/module-importer@1.0.1
+Extracted @humanwhocodes/module-importer@1.0.1
+Downloading tarball from: https://registry.npmjs.org/json-stable-stringify-without-jsonify/-/json-stable-stringify-without-jsonify-1.0.1.tgz
+Caching tarball for json-stable-stringify-without-jsonify@1.0.1
+Extracted json-stable-stringify-without-jsonify@1.0.1
+Downloading tarball from: https://registry.npmjs.org/eslint/-/eslint-8.57.0.tgz
+Caching tarball for eslint@8.57.0
+Extracted eslint@8.57.0
+Package ajv@6.12.6 already installed, skipping.
+Package fast-deep-equal@3.1.3 already installed, skipping.
+Package fast-json-stable-stringify@2.1.0 already installed, skipping.
+Package json-schema-traverse@0.4.1 already installed, skipping.
+Package uri-js@4.4.1 already installed, skipping.
+Package punycode@2.3.1 already installed, skipping.
+Package levn@0.4.1 already installed, skipping.
+Package prelude-ls@1.2.1 already installed, skipping.
+Package type-check@0.4.0 already installed, skipping.
+Package chalk@4.1.2 already installed, skipping.
+Package ansi-styles@4.3.0 already installed, skipping.
+Package color-convert@2.0.1 already installed, skipping.
+Package color-name@1.1.4 already installed, skipping.
+Package supports-color@7.2.0 already installed, skipping.
+Package has-flag@4.0.0 already installed, skipping.
+Package espree@9.6.1 already installed, skipping.
+Package acorn-jsx@5.3.2 already installed, skipping.
+Package esquery@1.5.0 already installed, skipping.
+Package estraverse@5.3.0 already installed, skipping.
+Package esutils@2.0.3 already installed, skipping.
+Package find-up@5.0.0 already installed, skipping.
+Package locate-path@6.0.0 already installed, skipping.
+Package p-locate@5.0.0 already installed, skipping.
+Package p-limit@3.1.0 already installed, skipping.
+Package yocto-queue@0.1.0 already installed, skipping.
+Package path-exists@4.0.0 already installed, skipping.
+Package globals@13.24.0 already installed, skipping.
+Package type-fest@0.20.2 already installed, skipping.
+Package js-yaml@4.1.0 already installed, skipping.
+Package argparse@2.0.1 already installed, skipping.
+Package doctrine@3.0.0 already installed, skipping.
+Package minimatch@3.1.2 already installed, skipping.
+Package brace-expansion@1.1.11 already installed, skipping.
+Package concat-map@0.0.1 already installed, skipping.
+Package @eslint/js@8.57.0 already installed, skipping.
+Package optionator@0.9.4 already installed, skipping.
+Package deep-is@0.1.4 already installed, skipping.
+Package word-wrap@1.2.5 already installed, skipping.
+Package fast-levenshtein@2.0.6 already installed, skipping.
+Package strip-ansi@6.0.1 already installed, skipping.
+Package ansi-regex@5.0.1 already installed, skipping.
+Package text-table@0.2.0 already installed, skipping.
+Package cross-spawn@7.0.3 already installed, skipping.
+Package path-key@3.1.1 already installed, skipping.
+Package shebang-command@2.0.0 already installed, skipping.
+Package shebang-regex@3.0.0 already installed, skipping.
+Package which@2.0.2 already installed, skipping.
+Package isexe@2.0.0 already installed, skipping.
+Package glob-parent@6.0.2 already installed, skipping.
+Package imurmurhash@0.1.4 already installed, skipping.
+Package eslint-scope@7.2.2 already installed, skipping.
+Package esrecurse@4.3.0 already installed, skipping.
+Package lodash.merge@4.6.2 already installed, skipping.
+Package is-path-inside@3.0.3 already installed, skipping.
+Package @eslint/eslintrc@2.1.4 already installed, skipping.
+Package import-fresh@3.3.0 already installed, skipping.
+Package parent-module@1.0.1 already installed, skipping.
+Package callsites@3.1.0 already installed, skipping.
+Package resolve-from@4.0.0 already installed, skipping.
+Package strip-json-comments@3.1.1 already installed, skipping.
+Package file-entry-cache@6.0.1 already installed, skipping.
+Package flat-cache@3.2.0 already installed, skipping.
+Package flatted@3.3.1 already installed, skipping.
+Package keyv@4.5.4 already installed, skipping.
+Package json-buffer@3.0.1 already installed, skipping.
+Package rimraf@3.0.2 already installed, skipping.
+Package glob@7.2.3 already installed, skipping.
+Package once@1.4.0 already installed, skipping.
+Package wrappy@1.0.2 already installed, skipping.
+Package inflight@1.0.6 already installed, skipping.
+Package inherits@2.0.4 already installed, skipping.
+Package fs.realpath@1.0.0 already installed, skipping.
+Package path-is-absolute@1.0.1 already installed, skipping.
+Package escape-string-regexp@4.0.0 already installed, skipping.
+Package @ungap/structured-clone@1.2.0 already installed, skipping.
+Package @humanwhocodes/config-array@0.11.14 already installed, skipping.
+Package @humanwhocodes/object-schema@2.0.3 already installed, skipping.
+Package @humanwhocodes/module-importer@1.0.1 already installed, skipping.
+Package json-stable-stringify-without-jsonify@1.0.1 already installed, skipping.
+Downloading tarball from: https://registry.npmjs.org/eslint-config-prettier/-/eslint-config-prettier-9.1.0.tgz
+Caching tarball for eslint-config-prettier@9.1.0
+Extracted eslint-config-prettier@9.1.0
+Downloading tarball from: https://registry.npmjs.org/prettier/-/prettier-3.3.2.tgz
+Caching tarball for prettier@3.3.2
+Extracted prettier@3.3.2
+Downloading tarball from: https://registry.npmjs.org/typescript/-/typescript-5.4.5.tgz
+Caching tarball for typescript@5.4.5
+Extracted typescript@5.4.5
+Lock file saved at /Users/eashansoni/Documents/CodingWorkspace/simple_package_manager/output/package-lock.json
+Total time taken: 41.191s

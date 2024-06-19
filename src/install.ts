@@ -31,15 +31,14 @@ export async function determinePackageInstallation(): Promise<void> {
   // Read dependencies in package.json.
   const packageJson = await getPackageJson();
   const dependencies = packageJson.dependencies;
-  console.log(`dependencies: ${JSON.stringify(dependencies, null, 2)}`);
 
-  const lockGraph: DependencyGraph | null = await readLockFile();
-  if (lockGraph) {
+  const lockedGraph: DependencyGraph | null = await readLockFile();
+  if (lockedGraph) {
     // The lock file exists, so check package.json's dependencies
     // against the lock file's graph.
     const dependenciesChanged = await didDependenciesChange(
       dependencies,
-      lockGraph,
+      lockedGraph,
     );
     if (dependenciesChanged) {
       // Something changed, so update dependencies and lock file.
@@ -47,23 +46,31 @@ export async function determinePackageInstallation(): Promise<void> {
     } else {
       // Nothing changed, so just install from lock file.
       console.log("----- Installing from lock file -----");
-      await installFromGraph(lockGraph);
-      await cleanupUnusedPackages(lockGraph);
+      // Install from the lock file's dependency graph.
+      await installFromGraph(lockedGraph);
+      // Prune any packages that are no longer needed.
+      await cleanupUnusedPackages(lockedGraph);
       return;
     }
   }
 
   // Lock file or dependencies changed, so do fresh install of all packages.
   console.log("----- Building dependency graph -----");
+  // Build the entire dependency graph.
   let fullGraph: DependencyGraph = {};
+  // Loop through each dependency listed in the package.json.
   for (const [packageName, versionRange] of Object.entries(dependencies)) {
+    // Resolve each dependency's version range to its exact version.
     const exactVersion = await resolveVersion(packageName, versionRange);
+    // Build the dependency graph.
     await buildDependencyGraph(packageName, exactVersion, true, fullGraph);
   }
   console.log("----- Installing dependencies -----");
-  console.log(`fullGraph:\n${JSON.stringify(fullGraph, null, 2)}`);
+  // Traverse the full dependency graph to install all packages.
   await installFromGraph(fullGraph);
+  // Prune any packages that are no longer needed.
   await cleanupUnusedPackages(fullGraph);
+  // Save the new lock file.
   await saveLockFile(fullGraph);
 }
 
@@ -77,7 +84,6 @@ export async function determinePackageInstallation(): Promise<void> {
  * @param graph The dependency graph.
  */
 async function cleanupUnusedPackages(graph: DependencyGraph): Promise<void> {
-  console.log(`INSIDE CLEANUP`);
   // The packages currently in the node_modules folder.
   const existingPackages = await fs.readdir(NODE_MODULES_PATH);
   // The correct packages computed in the dependency graph.
@@ -89,16 +95,14 @@ async function cleanupUnusedPackages(graph: DependencyGraph): Promise<void> {
       // the full package name.
       const parts = packageName.split("/");
       correctPackages.add(parts[0]);
-      correctPackages.add(packageName);
-    } else {
-      correctPackages.add(packageName);
     }
+    correctPackages.add(packageName);
   }
 
   // Iterate through all packages currently in the node_modules folder.
   for (const existingPackage of existingPackages) {
     // The package is not in the dependency graph, so it must be a
-    // stale (unused) package.
+    // stale (unused) package. Remove it.
     if (!correctPackages.has(existingPackage)) {
       const packagePath = path.join(NODE_MODULES_PATH, existingPackage);
       console.log(`Removing unused package ${existingPackage}.`);
@@ -113,13 +117,16 @@ async function cleanupUnusedPackages(graph: DependencyGraph): Promise<void> {
  * @param graph The dependency graph.
  */
 async function installFromGraph(graph: DependencyGraph): Promise<void> {
-  // Start the installation for all packages in the graph
+  // Set to keep track of already installed packages to avoid redundant processing.
   const installed = new Set<string>();
+  // Loop through each package in dependency graph.
   for (const packageIdentifier in graph) {
     try {
+      // Install the package and its dependencies recursively.
       await installPackage(packageIdentifier, graph, installed);
     } catch (error: any) {
       if (axios.isAxiosError(error)) {
+        // Network-related error.
         const errorMessage = `Failed to install ${packageIdentifier}: ${error.message}`;
         console.error(errorMessage);
         if (error.response) {
@@ -128,10 +135,13 @@ async function installFromGraph(graph: DependencyGraph): Promise<void> {
           );
         }
       } else if (error instanceof Error) {
+        // Generic errors.
         console.error(error.message);
       } else {
+        // Unknown errors.
         console.error(`An unknown error occurred.`);
       }
+      // Abort installation if error occurs.
       process.exit(1);
     }
   }
@@ -152,39 +162,49 @@ async function installPackage(
   graph: DependencyGraph,
   installed: Set<string>,
 ): Promise<void> {
+  // Skip processing if package has already been installed.
   if (installed.has(packageIdentifier)) {
     console.log(`Package ${packageIdentifier} already installed, skipping.`);
     return;
   }
 
+  // Retrieve package information from the dependency graph.
   const packageInfo = graph[packageIdentifier];
   if (!packageInfo) {
     throw new Error(`Package ${packageIdentifier} not found in the graph.`);
   }
 
-  // Recursively install all dependencies first
+  // Recursively install all sub-dependencies of the package first.
   for (const dependency of packageInfo.dependencies) {
     await installPackage(dependency, graph, installed);
   }
 
+  // Prepare the directory where the package will be installed.
   const [packageName] = parsePackageIdentifier(packageIdentifier);
   const packageDir = await preparePackageDirectory(packageName);
-
+  // Convert '/' to '-' so we can properly write to filesystem.
   const tarFilename = `${packageName.replace("/", "-")}-${packageInfo.version}.tgz`;
+  const cacheTarPath = path.join(CACHE_PATH, tarFilename);
+
+  // Retrieve the tarball for the package, either by reading from the
+  // cache or fetching from the NPM registry.
   const [tarData, isTarCached] = await retrieveTarball(
     packageName,
     packageInfo,
-    tarFilename,
+    cacheTarPath,
   );
+  // Validate, cache, and extract the tarball into the prepared package
+  // directory as appropriate.
   await extractTarball(
     packageName,
     packageInfo,
-    tarFilename,
+    cacheTarPath,
     tarData,
     isTarCached,
     packageDir,
   );
 
+  // Mark the package as installed.
   installed.add(packageIdentifier);
 }
 
@@ -196,14 +216,23 @@ async function installPackage(
  * @throws Error if directory couldn't be prepared due to invalid package name.
  */
 async function preparePackageDirectory(packageName: string): Promise<string> {
+  // If the package is a scoped directory, e.g. "@tsconfig/node10@1.0.11", the
+  // package directory should include the scoped part. For normal packages,
+  // just use the NODE_MODULES_PATH as normal.
   const scopedDir = packageName.startsWith("@")
     ? path.join(NODE_MODULES_PATH, packageName.split("/")[0])
     : NODE_MODULES_PATH;
+  // Split the package name to handle nested directories for scoped packages.
+  // This is necessary because scoped packages include both the scope and
+  // package name.
   const packageDirsSplit = packageName.split("/");
   if (packageDirsSplit.length === 0) {
     throw new Error(`Dependency name ${packageName} is invalid.`);
   }
+  // Pop the last element, which is the actual package name, to get the final
+  // directory name where the package will be installed.
   const packageDir = path.join(scopedDir, packageDirsSplit.pop() as string);
+  // Create package directory if it doesn't exist.
   const packageDirExists = await checkPathExists(packageDir);
   if (!packageDirExists) {
     await fs.mkdir(packageDir, { recursive: true });
@@ -218,16 +247,15 @@ async function preparePackageDirectory(packageName: string): Promise<string> {
  * @param packageName Name of package to retrieve tarball data.
  * @param packageInfo Info about the package including its version and URL to
  * fetch the tarball.
- * @param tarFilename Maybe replace this with cacheTarPath?
+ * @param cacheTarPath Path where tarball is or should be cached.
  * @returns Promise of a tuple containing tarball data as a Buffer, and
  * boolean indicating whether it was retrieved from cache.
  */
 async function retrieveTarball(
   packageName: string,
   packageInfo: PackageInfo,
-  tarFilename: string,
+  cacheTarPath: string,
 ): Promise<[Buffer, boolean]> {
-  const cacheTarPath = path.join(CACHE_PATH, tarFilename);
   const isTarCached = await checkPathExists(cacheTarPath);
 
   if (isTarCached) {
@@ -254,7 +282,7 @@ async function retrieveTarball(
  * 3. Extracts tarball into specified package directory.
  * @param packageName Name of package to
  * @param packageInfo Info about the package including its version and hash.
- * @param tarFilename Maybe replace this with cacheTarPath?
+ * @param cacheTarPath Path where tarball is or should be cached.
  * @param tarData Data of the tarball to validate.
  * @param isTarCached Whether the tarball was retrieved from cache.
  * @param packageDir Package directory where tarball should be extracted.
@@ -264,12 +292,11 @@ async function retrieveTarball(
 async function extractTarball(
   packageName: string,
   packageInfo: PackageInfo,
-  tarFilename: string,
+  cacheTarPath: string,
   tarData: Buffer,
   isTarCached: boolean,
   packageDir: string,
 ): Promise<void> {
-  const cacheTarPath = path.join(CACHE_PATH, tarFilename);
   const isPackageValid = doesHashMatch(tarData, packageInfo.hash);
   if (isPackageValid) {
     // Save tarball to cache if it wasn't already cached.

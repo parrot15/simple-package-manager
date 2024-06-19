@@ -1,17 +1,22 @@
-# VSCode
+# VSCode.
 /.vscode
 
-# MacOS stuff
+# MacOS stuff.
 .DS_Store
 
-# Dependencies
+# Dependencies.
 /node_modules
 
-# Config file
+# Config file.
 /src/config/config.json
 
-# Compiled Javascript files (I'm using Typescript)
+# Compiled Javascript files (I'm using Typescript).
 /dist
 
-# Generated output files
-/output
+# Generated output files.
+/output/*
+
+# Keep these example files (don't ignore them).
+!/output/package.example.json
+!/output/package-lock.example.json
+!/output/output.example.txt

@@ -21,8 +21,10 @@ import { PackageInfo, PackageJson, DependencyGraph } from "./types";
 export async function checkPathExists(path: string): Promise<boolean> {
   try {
     await fs.access(path);
+    // We successfully accessed the file, so it exists.
     return true;
   } catch {
+    // We failed to access, so it doesn't exist.
     return false;
   }
 }
@@ -111,23 +113,29 @@ export async function resolveVersion(
   packageName: string,
   versionRange: string,
 ): Promise<string> {
-  // If we've already looked up this package name and version range before,
-  // just return from cache.
   const cacheKey = `${packageName}@${versionRange}`;
+
+  // Check if the resolved version is already in the cache.
   if (packageVersionCache.has(cacheKey)) {
     console.log(`Retrieving version info ${cacheKey} from cache.`);
     return packageVersionCache.get(cacheKey) as string;
   }
 
-  const registryUrl = `${REGISTRY_URL}/${packageName}`;
-  console.log(`Fetching version info for ${registryUrl}.`);
   try {
+    // Fetch version data from the NPM registry.
+    const registryUrl = `${REGISTRY_URL}/${packageName}`;
+    console.log(`Fetching version info for ${registryUrl}.`);
     const response = await axios.get(registryUrl);
+
+    // If the version range was specified as 'latest', directly look
+    // up the latest version.
     if (versionRange === "latest") {
       const latestVersion = response.data["dist-tags"].latest;
       packageVersionCache.set(cacheKey, latestVersion);
       return latestVersion;
     }
+
+    // Resolve the maximum satisfying version among all available versions.
     const versions = Object.keys(response.data.versions);
     const validVersion = semver.maxSatisfying(versions, versionRange);
     if (!validVersion) {
@@ -135,6 +143,8 @@ export async function resolveVersion(
         `No matching version found for ${packageName}@${versionRange}`,
       );
     }
+
+    // Cache the resolved version for future requests.
     packageVersionCache.set(cacheKey, validVersion);
     return validVersion;
   } catch (error) {
@@ -166,19 +176,24 @@ export async function getPackageInfo(
     return packageInfoCache.get(packageIdentifier) as PackageInfo;
   }
 
-  const registryUrl = `${REGISTRY_URL}/${packageName}/${exactVersion}`;
-  console.log(`Fetching package info for ${registryUrl}.`);
   try {
+    // Fetch package metadata from NPM registry.
+    const registryUrl = `${REGISTRY_URL}/${packageName}/${exactVersion}`;
+    console.log(`Fetching package info for ${registryUrl}.`);
     const response = await axios.get(registryUrl);
+
+    // Construct an initial PackageInfo object.
     const packageInfo: PackageInfo = {
       version: response.data.version,
       tarballUrl: response.data.dist.tarball,
       hash: response.data.dist.integrity,
       isDirectDependency: false, // Default value of false, can be overridden.
-      dependencies: [], // Default value of empty, can be overriden.
+      dependencies: [], // Default value of empty, can be overridden.
     };
 
+    // Process dependencies, if any are listed.
     const dependencyVersionRanges = response.data.dependencies || {};
+    // Resolve each dependency's version range to its exact version.
     const dependencyIdentifiers = await Promise.all(
       Object.entries(dependencyVersionRanges).map(
         async ([depName, depVersionRange]) => {
@@ -186,12 +201,15 @@ export async function getPackageInfo(
             depName,
             depVersionRange as string,
           );
+          // Return in standard packageIdentifier format.
           return `${depName}@${exactVersion}`;
         },
       ),
     );
+    // Update package info with dependencies having exact versions.
     packageInfo.dependencies = dependencyIdentifiers;
 
+    // Cache the package info for future requests.
     packageInfoCache.set(packageIdentifier, packageInfo);
     return packageInfo;
   } catch (error) {
@@ -214,8 +232,11 @@ export async function getPackageInfo(
 export function parsePackageIdentifier(
   packageIdentifier: string,
 ): [string, string] {
+  // Find index of last '@' character which separates package name and version.
   const atIndex = packageIdentifier.lastIndexOf("@");
+  // Get packageName by substringing up to index.
   const packageName = packageIdentifier.substring(0, atIndex);
+  // Get packageName by substringing after index.
   const packageVersion = packageIdentifier.substring(atIndex + 1);
   return [packageName, packageVersion];
 }
@@ -229,12 +250,13 @@ export function parsePackageIdentifier(
  * @returns True if hashes match, false otherwise.
  */
 export function doesHashMatch(fileData: Buffer, expectedHash: string): boolean {
-  // Extract the hash algorithm and the hash value.
+  // Extract the hash algorithm and the expected hash value to use.
   const [algorithm, base64Hash] = expectedHash.split("-");
+  // Compute the actual hash.
   const actualHash = crypto
     .createHash(algorithm)
     .update(fileData)
     .digest("base64");
-
+  // Do they match?
   return actualHash === base64Hash;
 }
